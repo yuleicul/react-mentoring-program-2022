@@ -17,6 +17,9 @@
   "author": "Yulei Chen",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.19.6",
+    "@babel/preset-react": "^7.18.6",
+    "@rollup/plugin-babel": "^6.0.0",
     "prettier": "2.7.1",
     "rollup-plugin-livereload": "^2.0.5",
     "rollup-plugin-serve": "^2.0.1"
