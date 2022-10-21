@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "NODE_ENV=development rollup -c --bundleConfigAsCjs -w",
+    "build": "NODE_ENV=production rollup -c --bundleConfigAsCjs",
     "prettier": "prettier --write .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,6 +18,7 @@
   "license": "ISC",
   "devDependencies": {
     "prettier": "2.7.1",
+    "rollup-plugin-livereload": "^2.0.5",
     "rollup-plugin-serve": "^2.0.1"
   }
 }

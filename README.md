@@ -11,3 +11,7 @@
 
   `--bundleConfigAsCjs`? Ketcher doesn't have it
 
+- HMR
+  equal to `liveload`?
+
+  How does it work?
