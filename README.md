@@ -29,3 +29,12 @@
 - bug: cannot `import ReactDOM from 'react-dom/client'`
 
   https://rollupjs.org/guide/en/#error-name-is-not-exported-by-module
+
+- `@rollup/plugin-replace`
+
+  We can see React use `process.env.NODE_ENV` in its code, but browser doesn't have `process`
+
+  But why use `JSON.Stringify` ??
+
+  > Note: Values must be either primitives (e.g. string, number) or function that returns a string. For complex values, use JSON.stringify. To replace a target with a value that will be evaluated as a string, set the value to a quoted string (e.g. "test") or use JSON.stringify to preprocess the target string safely.
+
