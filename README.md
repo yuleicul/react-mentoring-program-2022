@@ -25,3 +25,7 @@
   What does `@rollup/plugin-node-resolve`?
 
   When to treat a package as an `external` package instead of resolving it?
+
+- bug: cannot `import ReactDOM from 'react-dom/client'`
+
+  https://rollupjs.org/guide/en/#error-name-is-not-exported-by-module

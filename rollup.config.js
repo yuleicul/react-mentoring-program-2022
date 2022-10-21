@@ -19,6 +19,7 @@ export default {
       }),
     process.env.NODE_ENV === 'development' && livereload(),
     babel({ presets: ['@babel/preset-react'], babelHelpers: 'bundled' }),
+    commonjs(),
     nodeResolve(),
   ],
 }
