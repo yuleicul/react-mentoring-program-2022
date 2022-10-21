@@ -1,0 +1,4 @@
+- npm init
+- git init
+- React code
+- prettier

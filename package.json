@@ -1,0 +1,20 @@
+{
+  "name": "rgm-2022q4-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prettier": "prettier --write .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "keywords": [],
+  "author": "Yulei Chen",
+  "license": "ISC",
+  "devDependencies": {
+    "prettier": "2.7.1",
+  }
+}
