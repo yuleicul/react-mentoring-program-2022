@@ -4,6 +4,7 @@ import { babel } from '@rollup/plugin-babel'
 import nodeResolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import replace from '@rollup/plugin-replace'
+import htmlTemplate from 'rollup-plugin-generate-html-template'
 
 export default {
   input: 'src/index.jsx',
@@ -25,6 +26,11 @@ export default {
     nodeResolve(),
     replace({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+      preventAssignment: true,
+    }),
+    htmlTemplate({
+      template: 'index.html',
+      target: 'index.html',
     }),
   ],
 }
