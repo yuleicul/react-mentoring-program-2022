@@ -16,5 +16,6 @@
   "license": "ISC",
   "devDependencies": {
     "prettier": "2.7.1",
+    "rollup-plugin-serve": "^2.0.1"
   }
 }
