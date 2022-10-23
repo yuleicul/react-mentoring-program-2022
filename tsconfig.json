@@ -1,0 +1,14 @@
+{
+  // All ts warnings or errors are coming from `typescript`
+  "compilerOptions": {
+    // fix: Cannot use JSX unless the '--jsx' flag is provided. (ts)
+    "jsx": "react",
+
+    // Ensure that .d.ts files are created by tsc, but not .js files
+    "declaration": true,
+    "declarationDir": "dist",
+    "emitDeclarationOnly": true,
+    // Ensure that Babel can safely transpile files in the TypeScript project
+    "isolatedModules": true
+  }
+}

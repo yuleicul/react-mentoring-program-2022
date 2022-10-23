@@ -38,3 +38,8 @@
 
   > Note: Values must be either primitives (e.g. string, number) or function that returns a string. For complex values, use JSON.stringify. To replace a target with a value that will be evaluated as a string, set the value to a quoted string (e.g. "test") or use JSON.stringify to preprocess the target string safely.
 
+- When making a modern JavaScript project, you might ask yourself what is the right way to convert files from TypeScript to JavaScript?
+
+  https://www.typescriptlang.org/docs/handbook/babel-with-typescript.html
+
+  In a Rollup set project, `@babel/preset-typescript` is to generate your JS files, `@rollup/plugin-typescript` is to do type checking and .d.ts file generation.

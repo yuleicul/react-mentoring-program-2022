@@ -7,6 +7,7 @@
     "dev": "NODE_ENV=development rollup -c --bundleConfigAsCjs -w",
     "build": "NODE_ENV=production rollup -c --bundleConfigAsCjs",
     "prettier": "prettier --write .",
+    "eslint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
@@ -19,13 +20,21 @@
   "devDependencies": {
     "@babel/core": "^7.19.6",
     "@babel/preset-react": "^7.18.6",
+    "@babel/preset-typescript": "^7.18.6",
     "@rollup/plugin-babel": "^6.0.0",
     "@rollup/plugin-commonjs": "^23.0.1",
     "@rollup/plugin-node-resolve": "^15.0.0",
     "@rollup/plugin-replace": "^5.0.0",
+    "@rollup/plugin-typescript": "^9.0.2",
+    "@typescript-eslint/eslint-plugin": "^5.40.1",
+    "@typescript-eslint/parser": "^5.40.1",
+    "eslint": "^8.26.0",
+    "eslint-plugin-react": "^7.31.10",
     "prettier": "2.7.1",
     "rollup-plugin-generate-html-template": "^1.7.0",
     "rollup-plugin-livereload": "^2.0.5",
-    "rollup-plugin-serve": "^2.0.1"
+    "rollup-plugin-serve": "^2.0.1",
+    "tslib": "^2.4.0",
+    "typescript": "^4.8.4"
   }
 }
