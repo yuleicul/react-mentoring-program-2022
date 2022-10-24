@@ -1,0 +1,9 @@
+# by default it will be
+
+# **/.git
+# **/.svn
+# **/.hg
+# **/node_modules
+
+dist
+.husky
