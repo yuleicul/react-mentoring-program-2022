@@ -1,45 +1,75 @@
-- npm init
-- git init
-- React code
-- prettier
+# React Global Mentoring Program
 
-  `--exactly`
+## Completion
 
-- dev server: vercel/serve
+|                                     |                             |         |     |
+| ----------------------------------- | --------------------------- | ------- | --- |
+| Module #1: Help module              | Oct 11, 2022                | 1 day   | ✅  |
+| Module #2: Core concepts            | Oct 12, 2022 - Oct 18, 2022 | 7 days  | ✅  |
+| Module #3: ~~Webpack~~ Rollup       | Oct 19, 2022 - Oct 25, 2022 | 7 days  | ✅  |
+| Module #4: Components (Part 1)      | Oct 26, 2022 - Nov 01, 2022 | 7 days  |     |
+| Module #5: Components (Part 2)      | Nov 02, 2022 - Nov 08, 2022 | 7 days  |     |
+| Module #6: Hooks                    | Nov 09, 2022 - Nov 15, 2022 | 7 days  |     |
+| Module #7: Redux                    | Nov 16, 2022 - Nov 29, 2022 | 14 days |     |
+| Module #8: Forms                    | Nov 30, 2022 - Dec 06, 2022 | 7 days  |     |
+| Module #9: Routing                  | Dec 07, 2022 - Dec 13, 2022 | 7 days  |     |
+| Module #10: Testing                 | Dec 14, 2022 - Dec 20, 2022 | 7 days  |     |
+| Module #11: SSR                     | Dec 21, 2022 - Dec 27, 2022 | 7 days  |     |
+| Module #12: Patterns, tips & tricks | Dec 28, 2022 - Jan 03, 2023 | 7 days  |     |
+| Module #13: Clean Code              | Jan 04, 2023 - Jan 06, 2023 | 3 days  |     |
+| Module #14: CloudX: Foundations     | Jan 07, 2023 - Jan 09, 2023 | 3 days  |     |
 
-  How does dev server work?
+## Module #2: Core concepts
 
-  `--bundleConfigAsCjs`? Ketcher doesn't have it
+https://stackblitz.com/edit/react-84z59b?file=src/App.js
 
-- HMR
-  equal to `liveload`?
+## Module #3: ~~Webpack~~ Rollup
 
-  How does it work?
+### How to run it
 
-- Babel
+```sh
+# install
+yarn
 
-  babelHelpers?
+# develop
+yarn dev
 
-- import package from `node_module`
+# build
+yarn build
+```
 
-  What does `@rollup/plugin-node-resolve`?
+### Process of making
 
-  When to treat a package as an `external` package instead of resolving it?
+[excalidraw]
 
-- bug: cannot `import ReactDOM from 'react-dom/client'`
+### Q&A
 
-  https://rollupjs.org/guide/en/#error-name-is-not-exported-by-module
+- What can we do to avoid `--bundleConfigAsCjs` in the rollup command? (in `package.json`)
 
-- `@rollup/plugin-replace`
+- How does HMR work? What's the difference between HMR and [rollup-plugin-livereload](https://github.com/thgh/rollup-plugin-livereload)?
+
+- What is `babelHelpers`? (in `rollup.config.js`)
+
+- How does [@rollup/plugin-node-resolve](https://github.com/rollup/plugins/tree/master/packages/node-resolve) work?
+
+- In what situation we need to treat a package as an `external` package, and how to?
+
+- What does [@rollup/plugin-replace](https://github.com/rollup/plugins/tree/master/packages/replace) do? and why we need to use `JSON.Stringify`?
 
   We can see React use `process.env.NODE_ENV` in its code, but browser doesn't have `process`
 
-  But why use `JSON.Stringify` ??
+  > [Note](https://github.com/rollup/plugins/tree/master/packages/replace#usage): Values must be either primitives (e.g. string, number) or function that returns a string. For complex values, use JSON.stringify. To replace a target with a value that will be evaluated as a string, set the value to a quoted string (e.g. "test") or use JSON.stringify to preprocess the target string safely.
 
-  > Note: Values must be either primitives (e.g. string, number) or function that returns a string. For complex values, use JSON.stringify. To replace a target with a value that will be evaluated as a string, set the value to a quoted string (e.g. "test") or use JSON.stringify to preprocess the target string safely.
-
-- When making a modern JavaScript project, you might ask yourself what is the right way to convert files from TypeScript to JavaScript?
+- What is the right way to convert files from TypeScript to JavaScript?
 
   https://www.typescriptlang.org/docs/handbook/babel-with-typescript.html
 
-  In a Rollup set project, `@babel/preset-typescript` is to generate your JS files, `@rollup/plugin-typescript` is to do type checking and .d.ts file generation.
+  In a Rollup bundled project, `@babel/preset-typescript` is to generate your JS files, `@rollup/plugin-typescript` is to do type checking and .d.ts file generation.
+
+- How does dev server, such as [rollup-plugin-serve](https://github.com/thgh/rollup-plugin-serve), work?
+
+### Fixed issues
+
+- cannot `import ReactDOM from 'react-dom/client'`
+
+  https://rollupjs.org/guide/en/#error-name-is-not-exported-by-module
