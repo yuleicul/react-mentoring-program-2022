@@ -25,7 +25,7 @@ https://stackblitz.com/edit/react-84z59b?file=src/App.js
 
 ## Module #3: ~~Webpack~~ Rollup
 
-### How to run it
+### Getting started
 
 ```sh
 # install
@@ -38,9 +38,11 @@ yarn dev
 yarn build
 ```
 
-### Process of making
+#### What's going on after running commands above?
 
-[excalidraw]
+![What's going on after running commands above?](docs/what-is-going-on-after-running-commands.png)
+
+You can click [here](https://excalidraw.com/#json=DeOoPxllmrObvAj66gmMV,26oCT1_DPb-38MqzSPJ3Kg) to edit the graph.
 
 ### Q&A
 
