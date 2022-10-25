@@ -6,13 +6,21 @@ import commonjs from '@rollup/plugin-commonjs'
 import replace from '@rollup/plugin-replace'
 import htmlTemplate from 'rollup-plugin-generate-html-template'
 import typescript from '@rollup/plugin-typescript'
+import { terser } from 'rollup-plugin-terser'
 
 export default {
   input: 'src/index.tsx',
-  output: {
-    file: 'dist/bundle.js',
-    format: 'es', // can be 'cjs', 'iife'
-  },
+  output: [
+    {
+      file: 'dist/bundle.js',
+      format: 'es', // can be 'cjs', 'iife'
+    },
+    process.env.NODE_ENV === 'production' && {
+      file: 'dist/bundle.min.js',
+      format: 'iife',
+      plugins: [terser()],
+    },
+  ],
   plugins: [
     process.env.NODE_ENV === 'development' &&
       serve({
