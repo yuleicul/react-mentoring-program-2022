@@ -6,9 +6,12 @@
         // With the new transform, you can use JSX without importing React.
         // https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html
         // Starting from Babel 8, "automatic" will be the default runtime
-        "runtime": "automatic"
+        "runtime": "automatic",
+
+        "importSource": "@emotion/react"
       }
     ],
     "@babel/preset-typescript"
-  ]
+  ],
+  "plugins": ["@emotion/babel-plugin"]
 }

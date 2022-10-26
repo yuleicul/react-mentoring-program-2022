@@ -9,6 +9,9 @@
     "declarationDir": "dist",
     "emitDeclarationOnly": true,
     // Ensure that Babel can safely transpile files in the TypeScript project
-    "isolatedModules": true
+    "isolatedModules": true,
+
+    // ? Module declared with 'export =', and can only be used with a default import when using the 'esModuleInterop' flag.
+    "esModuleInterop": true
   }
 }
