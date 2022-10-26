@@ -1,8 +1,8 @@
 {
   // All ts warnings or errors are coming from `typescript`
   "compilerOptions": {
-    // fix: Cannot use JSX unless the '--jsx' flag is provided. (ts)
-    "jsx": "react",
+    // https://devblogs.microsoft.com/typescript/announcing-typescript-4-1/#jsx-factories
+    "jsx": "react-jsx",
 
     // Ensure that .d.ts files are created by tsc, but not .js files
     "declaration": true,
