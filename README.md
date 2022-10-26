@@ -78,4 +78,8 @@ You can click [here](https://excalidraw.com/#json=DeOoPxllmrObvAj66gmMV,26oCT1_D
 
 - Cannot use JSX unless the '--jsx' flag is provided. (ts)
 
-  Add `"jsx": "react"` in `tsconfig.json`
+  Add `"jsx": "react"` to `tsconfig.json`
+
+- When `import React from 'react'`, ts trows that **Module declared with 'export =', and can only be used with a default import when using the 'esModuleInterop' flag.**
+
+  Add `"esModuleInterop": true` to `tsconfig.json`
