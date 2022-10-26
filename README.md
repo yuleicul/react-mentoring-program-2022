@@ -72,6 +72,10 @@ You can click [here](https://excalidraw.com/#json=DeOoPxllmrObvAj66gmMV,26oCT1_D
 
 ### Fixed issues
 
-- cannot `import ReactDOM from 'react-dom/client'`
+- Cannot `import ReactDOM from 'react-dom/client'`
 
   https://rollupjs.org/guide/en/#error-name-is-not-exported-by-module
+
+- Cannot use JSX unless the '--jsx' flag is provided. (ts)
+
+  Add `"jsx": "react"` in `tsconfig.json`
