@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "dev": "NODE_ENV=development rollup -c --bundleConfigAsCjs -w",
-    "build": "NODE_ENV=production rollup -c --bundleConfigAsCjs",
+    "dev": "NODE_ENV=development rollup -c -w",
+    "build": "NODE_ENV=production rollup -c",
     "prettier": "prettier --write .",
     "prepare": "husky install"
   },
