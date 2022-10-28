@@ -1,12 +1,7 @@
-import styled from '@emotion/styled'
+import HomePage from './pages/home-page'
 
-const H1 = styled.h1`
-  background-color: lightblue;
-  color: darkblue;
-`
-
-const App: React.FunctionComponent = () => {
-  return <H1>Hello World!</H1>
+const App: React.FC = () => {
+  return <HomePage />
 }
 
 export default App
