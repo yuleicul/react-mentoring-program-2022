@@ -83,3 +83,16 @@ You can click [here](https://excalidraw.com/#json=DeOoPxllmrObvAj66gmMV,26oCT1_D
 - When `import React from 'react'`, ts trows that **Module declared with 'export =', and can only be used with a default import when using the 'esModuleInterop' flag.**
 
   Add `"esModuleInterop": true` to `tsconfig.json`
+
+- Missing shims for Node.js built-ins when creating a browser bundle that depends on "stream".
+
+  Need to include https://github.com/FredKSchott/rollup-plugin-polyfill-node
+
+## Issues
+
+- (!) Circular dependencies
+
+  > node_modules/rollup-plugin-node-polyfills/polyfills/readable-stream/duplex.js -> node_modules/rollup-plugin-node-polyfills/polyfills/readable-stream/readable.js -> node_modules/rollup-plugin-node-polyfills/polyfills/readable-stream/duplex.js
+  > node_modules/rollup-plugin-node-polyfills/polyfills/readable-stream/duplex.js -> node_modules/rollup-plugin-node-polyfills/polyfills/readable-stream/writable.js -> node_modules/rollup-plugin-node-polyfills/polyfills/readable-stream/duplex.js
+
+  https://github.com/calvinmetcalf/rollup-plugin-node-builtins/issues/39

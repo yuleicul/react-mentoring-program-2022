@@ -7,6 +7,7 @@ import replace from '@rollup/plugin-replace'
 import htmlTemplate from 'rollup-plugin-generate-html-template'
 import typescript from '@rollup/plugin-typescript'
 import { terser } from 'rollup-plugin-terser'
+import nodePolyfills from 'rollup-plugin-node-polyfills'
 
 export default {
   input: 'src/index.tsx',
@@ -21,6 +22,10 @@ export default {
       plugins: [terser()],
     },
   ],
+  // When to use `external`
+  // When you want dependencies as peer dependencies
+  // https://styled-components.com/docs/faqs#removing-styledcomponents-from-your-library-bundle
+  // external: ['styled-components', 'react', 'react-dom'],
   plugins: [
     process.env.NODE_ENV === 'development' &&
       serve({
@@ -29,16 +34,21 @@ export default {
       }),
     process.env.NODE_ENV === 'development' && livereload(),
 
-    // Locate and bundle third-party dependencies in node_modules
-    // https://github.com/rollup/plugins/tree/master/packages/node-resolve
-    nodeResolve(),
-
     // `@rollup/plugin-commonjs` must be placed before `@rollup/plugin-babel` in the plugins array for the two to work together properly.
     // https://github.com/rollup/plugins/tree/master/packages/babel
-
+    //
     // Convert CommonJS modules to ES6
     // https://github.com/rollup/plugins/tree/master/packages/commonjs
     commonjs(),
+
+    // Allows the node builtins to be required/imported.
+    // https://github.com/ionic-team/rollup-plugin-node-polyfills
+    // https://github.com/rollup/plugins/tree/master/packages/node-resolve#resolving-built-ins-like-fs
+    nodePolyfills(),
+
+    // Locate and bundle third-party dependencies in node_modules
+    // https://github.com/rollup/plugins/tree/master/packages/node-resolve
+    nodeResolve(),
 
     // Using Babel’s preset-typescript to generate JS files,
     // and then using TypeScript to do type checking and .d.ts file generation.
@@ -55,6 +65,7 @@ export default {
       preventAssignment: true,
     }),
 
+    // https://github.com/bengsfort/rollup-plugin-generate-html-template
     htmlTemplate({
       template: 'index.html',
       target: 'index.html',
