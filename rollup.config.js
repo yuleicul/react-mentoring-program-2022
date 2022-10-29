@@ -12,9 +12,10 @@ import nodePolyfills from 'rollup-plugin-node-polyfills'
 export default {
   input: 'src/index.tsx',
   output: [
-    {
+    process.env.NODE_ENV === 'development' && {
       file: 'dist/bundle.js',
-      format: 'es', // can be 'cjs', 'iife'
+      format: 'iife', // can be 'cjs', 'iife'
+      sourcemap: true,
     },
     process.env.NODE_ENV === 'production' && {
       file: 'dist/bundle.min.js',
