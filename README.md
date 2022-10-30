@@ -44,7 +44,7 @@ yarn build
 
 You can click [here](https://excalidraw.com/#json=DeOoPxllmrObvAj66gmMV,26oCT1_DPb-38MqzSPJ3Kg) to edit the graph.
 
-### Q&A
+## Q&A
 
 - What can we do to avoid `--bundleConfigAsCjs` in the rollup command? (in `package.json`)
 
@@ -70,7 +70,11 @@ You can click [here](https://excalidraw.com/#json=DeOoPxllmrObvAj66gmMV,26oCT1_D
 
 - How does dev server, such as [rollup-plugin-serve](https://github.com/thgh/rollup-plugin-serve), work?
 
-### Fixed issues
+- (!) Plugin typescript: @rollup/plugin-typescript TS2307: Cannot find module './netflixroulette.svg' or its corresponding type declarations.
+
+  Although fixed with: https://www.codegrepper.com/code-examples/typescript/TS2307%3A+Cannot+find+module+%27svg%27+or+its+corresponding+type+declarations. But I still don't understand why ts handle the .svg file ,and why I need to make up with a .d.ts file but svgr didn't do that.
+
+## Fixed issues
 
 - Cannot `import ReactDOM from 'react-dom/client'`
 

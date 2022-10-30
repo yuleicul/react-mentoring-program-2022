@@ -8,6 +8,7 @@ import htmlTemplate from 'rollup-plugin-generate-html-template'
 import typescript from '@rollup/plugin-typescript'
 import { terser } from 'rollup-plugin-terser'
 import nodePolyfills from 'rollup-plugin-node-polyfills'
+import svgr from '@svgr/rollup'
 
 export default {
   input: 'src/index.tsx',
@@ -34,6 +35,9 @@ export default {
         port: 3000,
       }),
     process.env.NODE_ENV === 'development' && livereload(),
+
+    // https://www.npmjs.com/package/@svgr/rollup
+    svgr(),
 
     // `@rollup/plugin-commonjs` must be placed before `@rollup/plugin-babel` in the plugins array for the two to work together properly.
     // https://github.com/rollup/plugins/tree/master/packages/babel
