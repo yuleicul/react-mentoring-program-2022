@@ -1,22 +1,18 @@
 import styled from 'styled-components'
 
-const PageContainer = styled.div`
-  height: 10;
-  width: 10;
-  background-color: red;
-`
+import NetflixLogo from './NetflixLogo'
+
+const PageContainer = styled.div``
 
 const HomePage: React.FC = () => {
   return (
     <PageContainer>
-      {/* <NetflixLogo />
-      <AddMovieButton />
-
-      <div className="">
+      <NetflixLogo />
+      {/* <AddMovieButton /> */}
+      {/* <div className="">
         <SearchBoxContainer />
-      </div>
-
-      <div>
+      </div> */}
+      {/* <div>
         <div>
           <GenreFilters />
           <SortDropdown />
