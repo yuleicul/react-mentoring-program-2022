@@ -18,6 +18,7 @@
   },
   "plugins": ["react", "@typescript-eslint"],
   "rules": {
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off", // https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html
+    "react/prop-types": "off" // https://github.com/jsx-eslint/eslint-plugin-react/issues/2353
   }
 }
