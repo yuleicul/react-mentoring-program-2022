@@ -6,12 +6,12 @@ import { ThemeProvider } from 'styled-components'
 import App from './App'
 import ErrorBoundary from './common/ErrorBoundary'
 import GlobalStyle from './styles/GlobalStyle'
-import { mainTheme } from './styles/theme'
+import { defaultTheme } from './styles/theme'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ErrorBoundary>
-      <ThemeProvider theme={mainTheme}>
+      <ThemeProvider theme={defaultTheme}>
         <GlobalStyle />
         <App />
       </ThemeProvider>

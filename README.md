@@ -74,6 +74,12 @@ You can click [here](https://excalidraw.com/#json=DeOoPxllmrObvAj66gmMV,26oCT1_D
 
   Although fixed with: https://www.codegrepper.com/code-examples/typescript/TS2307%3A+Cannot+find+module+%27svg%27+or+its+corresponding+type+declarations. But I still don't understand why ts handle the .svg file ,and why I need to make up with a .d.ts file but svgr didn't do that.
 
+- 'children' is missing in props validation(eslintreact/prop-types)
+
+  https://github.com/jsx-eslint/eslint-plugin-react/issues/2353
+
+  I just solved it by adding `"rules": { "react/prop-types": "off" }` to eslintrc, but I don't know why eslint treats this as an warning
+
 ## Fixed issues
 
 - Cannot `import ReactDOM from 'react-dom/client'`
