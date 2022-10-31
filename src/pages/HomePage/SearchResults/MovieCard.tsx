@@ -6,7 +6,7 @@ const Wrapper = styled.div`
 
   img {
     height: 455;
-    width: 322;
+    width: 319;
     object-fit: fill;
     margin-bottom: 22;
   }

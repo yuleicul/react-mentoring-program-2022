@@ -4,10 +4,11 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     font-family: 'Montserrat', 'Courier New', Courier, monospace;
+    background-color: #888888;
   }
 
-  * {
-    box-sizing: border-box;
+  button {
+    cursor: pointer;
   }
 `
 

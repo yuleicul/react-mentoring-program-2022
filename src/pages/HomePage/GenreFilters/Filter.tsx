@@ -13,7 +13,13 @@ const Wrapper = styled.div`
       background-color: ${(props) => props.theme.color.main};
       height: 4;
       width: 100%;
+      position: absolute;
+      bottom: -24px;
     }
+  }
+
+  label {
+    position: relative;
   }
 `
 

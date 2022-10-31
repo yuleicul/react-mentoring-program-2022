@@ -2,9 +2,12 @@ import styled from 'styled-components'
 import SearchButton from './SearchButton'
 
 const Wrapper = styled.div`
+  padding: 0 60;
+
   .title {
     font-size: 40;
     color: white;
+    margin-bottom: 38;
   }
 
   .inputContainer {
@@ -13,7 +16,7 @@ const Wrapper = styled.div`
     gap: 14px;
 
     input {
-      width: 713;
+      width: 100%;
       font-size: 20;
       padding: 20;
       border: none; // override default

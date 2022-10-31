@@ -9,6 +9,7 @@ import typescript from '@rollup/plugin-typescript'
 import { terser } from 'rollup-plugin-terser'
 import nodePolyfills from 'rollup-plugin-node-polyfills'
 import svgr from '@svgr/rollup'
+import copy from 'rollup-plugin-copy'
 
 export default {
   input: 'src/index.tsx',
@@ -72,8 +73,13 @@ export default {
 
     // https://github.com/bengsfort/rollup-plugin-generate-html-template
     htmlTemplate({
-      template: 'index.html',
+      template: 'src/index.html',
       target: 'index.html',
+    }),
+
+    // https://github.com/vladshcherbin/rollup-plugin-copy
+    copy({
+      targets: [{ src: 'src/assets/*', dest: 'dist/assets' }],
     }),
   ],
 }
