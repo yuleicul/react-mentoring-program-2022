@@ -16,7 +16,7 @@ export default {
   output: [
     process.env.NODE_ENV === 'development' && {
       file: 'dist/bundle.js',
-      format: 'iife', // can be 'cjs', 'iife'
+      format: 'iife',
       sourcemap: true,
     },
     process.env.NODE_ENV === 'production' && {
@@ -60,7 +60,7 @@ export default {
     // and then using TypeScript to do type checking and .d.ts file generation.
     // https://www.typescriptlang.org/docs/handbook/babel-with-typescript.html
     babel({
-      babelHelpers: 'bundled', // ?
+      babelHelpers: 'bundled',
       exclude: 'node_modules/**',
     }),
     typescript(),
