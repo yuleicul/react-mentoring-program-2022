@@ -7,7 +7,7 @@
 | Module #1: Help module              | Oct 11, 2022                | 1 day   | ✅  |
 | Module #2: Core concepts            | Oct 12, 2022 - Oct 18, 2022 | 7 days  | ✅  |
 | Module #3: ~~Webpack~~ Rollup       | Oct 19, 2022 - Oct 25, 2022 | 7 days  | ✅  |
-| Module #4: Components (Part 1)      | Oct 26, 2022 - Nov 01, 2022 | 7 days  |     |
+| Module #4: Components (Part 1)      | Oct 26, 2022 - Nov 01, 2022 | 7 days  | ✅  |
 | Module #5: Components (Part 2)      | Nov 02, 2022 - Nov 08, 2022 | 7 days  |     |
 | Module #6: Hooks                    | Nov 09, 2022 - Nov 15, 2022 | 7 days  |     |
 | Module #7: Redux                    | Nov 16, 2022 - Nov 29, 2022 | 14 days |     |
@@ -44,15 +44,23 @@ yarn build
 
 You can click [here](https://excalidraw.com/#json=DeOoPxllmrObvAj66gmMV,26oCT1_DPb-38MqzSPJ3Kg) to edit the graph.
 
-## Q&A
+### Q&A
 
 - What can we do to avoid `--bundleConfigAsCjs` in the rollup command? (in `package.json`)
 
+  By add `"type": "module"` to `package.json`, but why?
+
 - How does HMR work? What's the difference between HMR and [rollup-plugin-livereload](https://github.com/thgh/rollup-plugin-livereload)?
+
+  > Keywords: websocket, JS runtime, dependency tree
 
 - What is `babelHelpers`? (in `rollup.config.js`)
 
+  How babel helpers are inserted into the code. https://github.com/rollup/plugins/tree/master/packages/babel#babelhelpers
+
 - How does [@rollup/plugin-node-resolve](https://github.com/rollup/plugins/tree/master/packages/node-resolve) work?
+
+  > Keywords: node dependency resolve strategy
 
 - In what situation we need to treat a package as an `external` package, and how to?
 
@@ -62,23 +70,23 @@ You can click [here](https://excalidraw.com/#json=DeOoPxllmrObvAj66gmMV,26oCT1_D
 
   > [Note](https://github.com/rollup/plugins/tree/master/packages/replace#usage): Values must be either primitives (e.g. string, number) or function that returns a string. For complex values, use JSON.stringify. To replace a target with a value that will be evaluated as a string, set the value to a quoted string (e.g. "test") or use JSON.stringify to preprocess the target string safely.
 
+  React has two versions - development and production. React will throw warnings to the console when developing, whereas, hide them in production environment. Maybe this is why we need to use `@rollup/plugin-replace` even in the browser env.
+
 - What is the right way to convert files from TypeScript to JavaScript?
 
   https://www.typescriptlang.org/docs/handbook/babel-with-typescript.html
 
   In a Rollup bundled project, `@babel/preset-typescript` is to generate your JS files, `@rollup/plugin-typescript` is to do type checking and .d.ts file generation.
 
+  `@babel/preset-typescript` may can resolve conflicts between JSX and Typescript.
+
 - How does dev server, such as [rollup-plugin-serve](https://github.com/thgh/rollup-plugin-serve), work?
 
-- (!) Plugin typescript: @rollup/plugin-typescript TS2307: Cannot find module './netflixroulette.svg' or its corresponding type declarations.
+  > Keywords: http server
 
-  Although fixed with: https://www.codegrepper.com/code-examples/typescript/TS2307%3A+Cannot+find+module+%27svg%27+or+its+corresponding+type+declarations. But I still don't understand why ts handle the .svg file ,and why I need to make up with a .d.ts file but svgr didn't do that.
+## Module #4: Components (Part 1)
 
-- 'children' is missing in props validation(eslintreact/prop-types)
-
-  https://github.com/jsx-eslint/eslint-plugin-react/issues/2353
-
-  I just solved it by adding `"rules": { "react/prop-types": "off" }` to eslintrc, but I don't know why eslint treats this as an warning
+https://github.com/yuleicul/rgm-2022q4-demo/pull/1
 
 ## Fixed issues
 
@@ -97,6 +105,16 @@ You can click [here](https://excalidraw.com/#json=DeOoPxllmrObvAj66gmMV,26oCT1_D
 - Missing shims for Node.js built-ins when creating a browser bundle that depends on "stream".
 
   Need to include https://github.com/FredKSchott/rollup-plugin-polyfill-node
+
+- (!) Plugin typescript: @rollup/plugin-typescript TS2307: Cannot find module './netflixroulette.svg' or its corresponding type declarations.
+
+  Although fixed with: https://www.codegrepper.com/code-examples/typescript/TS2307%3A+Cannot+find+module+%27svg%27+or+its+corresponding+type+declarations. But I still don't understand why ts handle the .svg file ,and why I need to make up with a .d.ts file but svgr didn't do that.
+
+- 'children' is missing in props validation(eslintreact/prop-types)
+
+  https://github.com/jsx-eslint/eslint-plugin-react/issues/2353
+
+  I just solved it by adding `"rules": { "react/prop-types": "off" }` to eslintrc, but I don't know why eslint treats this as an warning
 
 ## Issues
 
