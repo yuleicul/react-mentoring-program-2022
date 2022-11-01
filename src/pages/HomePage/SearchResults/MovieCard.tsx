@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import ContextMenu from './ContextMenu'
 
 const Wrapper = styled.div`
   color: white;
@@ -48,6 +49,8 @@ const MovieCard: React.FC<MovieCardProps> = ({
   return (
     <Wrapper>
       <img src={coverSrc} alt="cover" />
+      <ContextMenu />
+
       <div className="title">{title}</div>
       <div className="genre">{genre.join(', ')}</div>
       <div className="date">{releaseDate}</div>
