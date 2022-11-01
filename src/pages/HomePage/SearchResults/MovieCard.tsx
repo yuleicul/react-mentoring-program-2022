@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import ContextMenu from './ContextMenu'
+import ContextMenu, { Wrapper as ContextMenuWrapper } from './ContextMenu'
 
 const Wrapper = styled.div`
   color: white;
@@ -31,6 +31,10 @@ const Wrapper = styled.div`
     right: 0;
     bottom: 25;
   }
+
+  &:hover ${ContextMenuWrapper} {
+    visibility: visible;
+  }
 `
 
 interface MovieCardProps {
@@ -49,11 +53,11 @@ const MovieCard: React.FC<MovieCardProps> = ({
   return (
     <Wrapper>
       <img src={coverSrc} alt="cover" />
-      <ContextMenu />
-
       <div className="title">{title}</div>
       <div className="genre">{genre.join(', ')}</div>
       <div className="date">{releaseDate}</div>
+
+      <ContextMenu />
     </Wrapper>
   )
 }
