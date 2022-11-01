@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const Wrapper = styled.div`
+export const Wrapper = styled.div`
   height: 36;
   width: 36;
   border-radius: 50%;
@@ -11,6 +11,7 @@ const Wrapper = styled.div`
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.196596);
   padding: 3;
   cursor: pointer;
+  visibility: hidden;
 `
 
 const WhiteDot = styled.div`

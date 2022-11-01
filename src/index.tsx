@@ -12,6 +12,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ErrorBoundary>
       <ThemeProvider theme={defaultTheme}>
+        {/* (WIP) GlobalStyle not working */}
         <GlobalStyle />
         <App />
       </ThemeProvider>
