@@ -1,12 +1,15 @@
 import styled from 'styled-components'
+
+import { useState } from 'react'
 import AddMovieButton from './AddMovieButton'
 import GenreFilters from './GenreFilters'
-
-import NetflixLogo from '../../common/NetflixLogo'
 import SearchBox from './SearchBox'
 import SearchResults from './SearchResults'
 import SortDropdown from './SortDropdown'
 import Footer from './Footer'
+import AddMovieModal from './AddMovieModal'
+
+import NetflixLogo from '../../common/NetflixLogo'
 
 const Wrapper = styled.div`
   .header {
@@ -37,12 +40,17 @@ const Wrapper = styled.div`
 `
 
 const HomePage: React.FC = () => {
+  const [isAddMovieModalVisible, setIsAddMovieModalVisible] = useState(false)
+
+  const handleClick = () => {
+    setIsAddMovieModalVisible(true)
+  }
   return (
     <Wrapper>
       <div className="header">
         <div className="logoRow">
           <NetflixLogo />
-          <AddMovieButton />
+          <AddMovieButton onClick={handleClick} />
         </div>
         <SearchBox />
       </div>
@@ -57,6 +65,9 @@ const HomePage: React.FC = () => {
       </div>
 
       <Footer />
+
+      {/* {isAddMovieModalVisible && <AddMovieModal />} */}
+      <AddMovieModal />
     </Wrapper>
   )
 }

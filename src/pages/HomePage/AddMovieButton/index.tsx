@@ -11,8 +11,12 @@ const Wrapper = styled.button`
   color: ${(props) => props.theme.color.main};
 `
 
-const AddMovieButton: React.FC = () => {
-  return <Wrapper>+ ADD MOVIE</Wrapper>
+interface AddMovieButtonProps {
+  onClick: () => void
+}
+
+const AddMovieButton: React.FC<AddMovieButtonProps> = ({ onClick }) => {
+  return <Wrapper onClick={onClick}>+ ADD MOVIE</Wrapper>
 }
 
 export default AddMovieButton
