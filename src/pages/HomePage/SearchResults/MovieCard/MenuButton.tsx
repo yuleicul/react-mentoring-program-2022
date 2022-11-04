@@ -21,10 +21,13 @@ const WhiteDot = styled.div`
   background-color: white;
   margin: 4 auto;
 `
+interface MenuButtonProps {
+  onClick: () => void
+}
 
-const ContextMenu: React.FC = () => {
+const MenuButton: React.FC<MenuButtonProps> = (props) => {
   return (
-    <Wrapper>
+    <Wrapper onClick={props.onClick}>
       <WhiteDot />
       <WhiteDot />
       <WhiteDot />
@@ -32,4 +35,4 @@ const ContextMenu: React.FC = () => {
   )
 }
 
-export default ContextMenu
+export default MenuButton

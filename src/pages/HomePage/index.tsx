@@ -7,9 +7,11 @@ import SearchBox from './SearchBox'
 import SearchResults from './SearchResults'
 import SortDropdown from './SortDropdown'
 import Footer from './Footer'
-import AddMovieModal from './AddMovieModal'
+import AddOrEditMovieModal from './AddOrEditMovieModal'
 
 import NetflixLogo from '../../common/NetflixLogo'
+import DeleteMovieModal from './DeleteMovieModal'
+import SuccessModal from './SuccessModal'
 
 const Wrapper = styled.div`
   > .header {
@@ -40,10 +42,12 @@ const Wrapper = styled.div`
 `
 
 const HomePage: React.FC = () => {
-  const [isAddMovieModalVisible, setIsAddMovieModalVisible] = useState(false)
+  const [isAddOrEditModalVisible, setAddOrEditModalVisible] = useState(false)
+  const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false)
+  const [isSuccessModalVisible, setIsSuccessModalVisible] = useState(false)
 
   const handleClick = () => {
-    setIsAddMovieModalVisible(true)
+    setAddOrEditModalVisible(true)
   }
   return (
     <Wrapper>
@@ -61,13 +65,28 @@ const HomePage: React.FC = () => {
           <SortDropdown />
         </div>
 
-        <SearchResults />
+        <SearchResults
+          onEdit={() => setAddOrEditModalVisible(true)}
+          onDelete={() => setIsDeleteModalVisible(true)}
+        />
       </div>
 
       <Footer />
 
-      {isAddMovieModalVisible && (
-        <AddMovieModal onClose={() => setIsAddMovieModalVisible(false)} />
+      {/* Modals */}
+      {isAddOrEditModalVisible && (
+        <AddOrEditMovieModal
+          onClose={() => setAddOrEditModalVisible(false)}
+          onSubmit={() => setIsSuccessModalVisible(true)}
+        />
+      )}
+
+      {isDeleteModalVisible && (
+        <DeleteMovieModal onClose={() => setIsDeleteModalVisible(false)} />
+      )}
+
+      {isSuccessModalVisible && (
+        <SuccessModal onClose={() => setIsSuccessModalVisible(false)} />
       )}
     </Wrapper>
   )

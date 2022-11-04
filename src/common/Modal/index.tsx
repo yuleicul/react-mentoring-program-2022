@@ -37,7 +37,7 @@ const Wrapper = styled.div<WrapperProps>`
 `
 
 interface ModalProps {
-  title: string
+  title?: string
   width: number
   children?: React.ReactNode
   className?: string
@@ -52,7 +52,7 @@ const Modal: React.FC<ModalProps> = ({ title, width, children, onClose }) => {
         <div className="closeButton" onClick={onClose}>
           <CloseButtonSvg />
         </div>
-        <div className="title">{title}</div>
+        {title && <div className="title">{title}</div>}
         <div className="content">{children}</div>
       </div>
     </Wrapper>

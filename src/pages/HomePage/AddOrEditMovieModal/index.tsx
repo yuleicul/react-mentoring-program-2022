@@ -21,14 +21,15 @@ const FlexWrapper = styled.div`
   }
 `
 
-interface AddMovieModalProps {
+interface AddOrEditMovieModalProps {
   onClose: () => void
+  onSubmit: () => void
 }
 
-const AddMovieModal: React.FC<AddMovieModalProps> = (props) => {
+const AddOrEditMovieModal: React.FC<AddOrEditMovieModalProps> = (props) => {
   return (
     <Modal title="ADD MOVIE" width={976} onClose={props.onClose}>
-      <Form>
+      <Form buttons={['reset', 'submit']} onSubmit={props.onSubmit}>
         <FlexWrapper>
           <Input type="text" label="TITLE" placeholder="Title" />
           <Input type="date" label="RELEASE DATE" placeholder="Select Date" />
@@ -43,4 +44,4 @@ const AddMovieModal: React.FC<AddMovieModalProps> = (props) => {
   )
 }
 
-export default AddMovieModal
+export default AddOrEditMovieModal
