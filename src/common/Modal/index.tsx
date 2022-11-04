@@ -2,34 +2,34 @@ import styled from 'styled-components'
 import CloseButtonSvg from './close-button.svg'
 
 interface WrapperProps {
-  width: number
+  modalWidth: number
+  height: number
 }
 
 const Wrapper = styled.div<WrapperProps>`
   position: absolute;
-  height: 100%;
+  height: ${(props) => props.height};
   width: 100%;
   top: 0;
   left: 0;
-  // TODO rgba(35, 35, 35, 0.9);
-  background-color: rgba(35, 35, 35, 0.5);
+  background-color: rgba(35, 35, 35, 0.9);
   font-size: 20;
   color: white;
+  overflow: auto;
 
-  .modal {
+  > .modal {
     background-color: #232323;
-    width: ${(props) => props.width};
+    width: ${(props) => props.modalWidth};
     margin: 175 auto;
     padding: 50;
     position: relative;
-    // TODO remove
-    border: 1px solid white;
-    .closeButton {
+    > .closeButton {
       position: absolute;
       top: 30;
       right: 30;
+      cursor: pointer;
     }
-    .title {
+    > .title {
       font-size: 40;
       margin-bottom: 38;
     }
@@ -45,15 +45,9 @@ interface ModalProps {
   onClose: () => void
 }
 
-const Modal: React.FC<ModalProps> = ({
-  title,
-  width,
-  children,
-  className,
-  onClose,
-}) => {
+const Modal: React.FC<ModalProps> = ({ title, width, children, onClose }) => {
   return (
-    <Wrapper width={width}>
+    <Wrapper modalWidth={width} height={document.scrollingElement.scrollHeight}>
       <div className="modal">
         <div className="closeButton" onClick={onClose}>
           <CloseButtonSvg />
