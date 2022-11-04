@@ -1,11 +1,14 @@
+import { useId } from 'react'
 import styled from 'styled-components'
+import CalendarIcon from './calendar-icon.svg'
 
-const Wrapper = styled.div`
-  label {
+export const Wrapper = styled.div`
+  position: relative;
+  > label {
     font-size: 16;
     color: ${(props) => props.theme.color.main};
   }
-  input {
+  > input {
     display: block;
     margin-top: 13;
     height: 57;
@@ -16,8 +19,21 @@ const Wrapper = styled.div`
     border-radius: 4px;
     background-color: rgba(50, 50, 50, 0.8);
     color: white;
+
+    // Copied from https://codepen.io/andyftp/pen/EQoKxq
+    &[type='date']::-webkit-calendar-picker-indicator {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: auto;
+      height: auto;
+      color: transparent;
+      background: transparent;
+    }
   }
-  textarea {
+  > textarea {
     display: block;
     margin-top: 13;
     width: 100%;
@@ -28,29 +44,46 @@ const Wrapper = styled.div`
     background-color: rgba(50, 50, 50, 0.8);
     color: white;
   }
+  > .calendarIcon {
+    position: absolute;
+    top: 47;
+    right: 18;
+  }
 `
 
 interface InputProps {
   placeholder: string
+  type?: string
   textarea?: boolean
   label: string
   onClick?: () => void
 }
 
 const Input: React.FC<InputProps> = (props) => {
+  const id = useId()
   return (
     <Wrapper>
-      <label htmlFor={props.label}>{props.label}</label>
+      <label htmlFor={id}>{props.label}</label>
 
       {props.textarea ? (
-        <textarea name="Text1" cols={40} rows={5}></textarea>
+        <textarea
+          name="Text1"
+          rows={7}
+          placeholder={props.placeholder}
+        ></textarea>
       ) : (
         <input
-          type="text"
-          id={props.label}
+          type={props.type}
+          id={id}
           name={props.label}
           placeholder={props.placeholder}
         ></input>
+      )}
+
+      {props.type === 'date' && (
+        <div className="calendarIcon">
+          <CalendarIcon />
+        </div>
       )}
     </Wrapper>
   )
