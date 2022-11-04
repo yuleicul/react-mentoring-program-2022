@@ -4,7 +4,7 @@ const Wrapper = styled.div`
   display: flex;
   gap: 13px;
 
-  .selected {
+  > .selected {
     color: white;
     font-size: 16;
     text-transform: uppercase;

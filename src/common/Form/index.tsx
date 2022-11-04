@@ -2,10 +2,11 @@ import styled from 'styled-components'
 import InputButton from '../InputButton'
 
 const Wrapper = styled.form`
-  .footer {
+  > .footer {
     display: flex;
     justify-content: flex-end;
     gap: 10px;
+    margin-top: 60;
   }
 `
 
@@ -26,8 +27,8 @@ const Form: React.FC<FormProps> = (props) => {
     >
       {props.children}
       <div className="footer">
-        <InputButton plain type="submit" value="SUBMIT" />
-        <InputButton type="reset" value="RESET" />
+        <InputButton plain type="reset" value="RESET" />
+        <InputButton type="submit" value="SUBMIT" />
       </div>
     </Wrapper>
   )

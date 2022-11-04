@@ -2,13 +2,13 @@ import styled from 'styled-components'
 import MovieCard from './MovieCard'
 
 const Wrapper = styled.div`
-  .resultSum {
+  > .resultSum {
     color: white;
     font-size: 20;
     padding: 24 0;
   }
 
-  .CardContainer {
+  > .CardContainer {
     padding-bottom: 70;
     display: flex;
     flex-wrap: wrap;

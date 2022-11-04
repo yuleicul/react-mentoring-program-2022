@@ -5,7 +5,7 @@ const Wrapper = styled.div`
   display: flex;
   gap: 30px;
 
-  .title {
+  > .title {
     font-size: 16;
     color: white;
     opacity: 0.6;
