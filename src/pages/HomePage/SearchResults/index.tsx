@@ -1,4 +1,6 @@
+import { useState } from 'react'
 import styled from 'styled-components'
+import Dropdown from './MovieCard/Dropdown'
 import MovieCard from './MovieCard'
 
 const Wrapper = styled.div`
@@ -16,8 +18,12 @@ const Wrapper = styled.div`
     gap: 50px;
   }
 `
+interface SearchResultProps {
+  onEdit: () => void
+  onDelete: () => void
+}
 
-const SearchResult: React.FC = () => {
+const SearchResult: React.FC<SearchResultProps> = (props) => {
   return (
     <Wrapper>
       <div className="resultSum">
@@ -29,42 +35,56 @@ const SearchResult: React.FC = () => {
           title="Mario"
           genre={['Cartoon', 'Action']}
           releaseDate="2022"
+          onEdit={props.onEdit}
+          onDelete={props.onDelete}
         />
         <MovieCard
           coverSrc="https://th.bing.com/th/id/OIP.UNtn3Qq38k2d6bpecqvpowHaLo?pid=ImgDet&rs=1"
           title="Mario"
           genre={['Cartoon', 'Action']}
           releaseDate="2022"
+          onEdit={props.onEdit}
+          onDelete={props.onDelete}
         />
         <MovieCard
           coverSrc="https://th.bing.com/th/id/OIP.UNtn3Qq38k2d6bpecqvpowHaLo?pid=ImgDet&rs=1"
           title="Mario"
           genre={['Cartoon', 'Action']}
           releaseDate="2022"
+          onEdit={props.onEdit}
+          onDelete={props.onDelete}
         />
         <MovieCard
           coverSrc="https://th.bing.com/th/id/OIP.UNtn3Qq38k2d6bpecqvpowHaLo?pid=ImgDet&rs=1"
           title="Mario"
           genre={['Cartoon', 'Action']}
           releaseDate="2022"
+          onEdit={props.onEdit}
+          onDelete={props.onDelete}
         />
         <MovieCard
           coverSrc="https://th.bing.com/th/id/OIP.UNtn3Qq38k2d6bpecqvpowHaLo?pid=ImgDet&rs=1"
           title="Mario"
           genre={['Cartoon', 'Action']}
           releaseDate="2022"
+          onEdit={props.onEdit}
+          onDelete={props.onDelete}
         />
         <MovieCard
           coverSrc="https://th.bing.com/th/id/OIP.UNtn3Qq38k2d6bpecqvpowHaLo?pid=ImgDet&rs=1"
           title="Mario"
           genre={['Cartoon', 'Action']}
           releaseDate="2022"
+          onEdit={props.onEdit}
+          onDelete={props.onDelete}
         />
         <MovieCard
           coverSrc="https://th.bing.com/th/id/OIP.UNtn3Qq38k2d6bpecqvpowHaLo?pid=ImgDet&rs=1"
           title="Mario"
           genre={['Cartoon', 'Action']}
           releaseDate="2022"
+          onEdit={props.onEdit}
+          onDelete={props.onDelete}
         />
       </div>
     </Wrapper>

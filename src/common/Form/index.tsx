@@ -14,6 +14,7 @@ interface FormProps {
   children?: React.ReactNode
   onSubmit?: () => void
   onReset?: () => void
+  buttons?: string[]
 }
 
 const Form: React.FC<FormProps> = (props) => {
@@ -26,10 +27,20 @@ const Form: React.FC<FormProps> = (props) => {
       onReset={props.onReset}
     >
       {props.children}
-      <div className="footer">
-        <InputButton plain type="reset" value="RESET" />
-        <InputButton type="submit" value="SUBMIT" />
-      </div>
+
+      {props.buttons && (
+        <div className="footer">
+          {props.buttons.includes('reset') && (
+            <InputButton plain type="reset" value="RESET" />
+          )}
+          {props.buttons.includes('submit') && (
+            <InputButton type="submit" value="SUBMIT" />
+          )}
+          {props.buttons.includes('confirm') && (
+            <InputButton type="submit" value="CONFIRM" />
+          )}
+        </div>
+      )}
     </Wrapper>
   )
 }
