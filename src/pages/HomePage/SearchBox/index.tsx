@@ -4,18 +4,18 @@ import SearchButton from './SearchButton'
 const Wrapper = styled.div`
   padding: 0 60;
 
-  .title {
+  > .title {
     font-size: 40;
     color: white;
     margin-bottom: 38;
   }
 
-  .inputContainer {
+  > .inputContainer {
     display: flex;
     height: 57;
     gap: 14px;
 
-    input {
+    > input {
       width: 100%;
       font-size: 20;
       padding: 20;

@@ -5,22 +5,22 @@ const Wrapper = styled.div`
   color: white;
   position: relative;
 
-  img {
+  > img {
     height: 455;
     width: 319;
     object-fit: fill;
     margin-bottom: 22;
   }
-  .title {
+  > .title {
     opacity: 0.7;
     font-size: 18;
     margin-bottom: 8;
   }
-  .genre {
+  > .genre {
     opacity: 0.5;
     font-size: 14;
   }
-  .date {
+  > .date {
     opacity: 0.7;
     font-size: 14;
     border: 1px solid #979797;

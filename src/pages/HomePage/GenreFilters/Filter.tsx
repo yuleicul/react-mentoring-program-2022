@@ -5,7 +5,7 @@ const Wrapper = styled.div`
   color: white;
   text-transform: uppercase;
 
-  input {
+  > input {
     display: none; // override default
     &:checked + label::after {
       display: block;
@@ -18,7 +18,7 @@ const Wrapper = styled.div`
     }
   }
 
-  label {
+  > label {
     position: relative;
   }
 `

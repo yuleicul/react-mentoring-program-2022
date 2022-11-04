@@ -12,24 +12,24 @@ import AddMovieModal from './AddMovieModal'
 import NetflixLogo from '../../common/NetflixLogo'
 
 const Wrapper = styled.div`
-  .header {
+  > .header {
     height: 396;
     background-image: url(/assets/header.png);
     background-repeat: no-repeat;
     background-size: cover;
     padding: 20 60;
     margin-bottom: 10;
-    .logoRow {
+    > .logoRow {
       display: flex;
       justify-content: space-between;
       margin-bottom: 35;
     }
   }
 
-  .content {
+  > .content {
     background-color: #232323;
     padding: 0 60;
-    .filters {
+    > .filters {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -66,8 +66,9 @@ const HomePage: React.FC = () => {
 
       <Footer />
 
-      {/* {isAddMovieModalVisible && <AddMovieModal />} */}
-      <AddMovieModal />
+      {isAddMovieModalVisible && (
+        <AddMovieModal onClose={() => setIsAddMovieModalVisible(false)} />
+      )}
     </Wrapper>
   )
 }
