@@ -1,4 +1,4 @@
-import { useId } from 'react'
+import { HTMLInputTypeAttribute, useId } from 'react'
 import styled from 'styled-components'
 import CalendarIcon from './calendar-icon.svg'
 
@@ -51,12 +51,9 @@ export const Wrapper = styled.div`
   }
 `
 
-interface InputProps {
-  placeholder: string
-  type?: string
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   textarea?: boolean
   label: string
-  onClick?: () => void
 }
 
 const Input: React.FC<InputProps> = (props) => {
@@ -73,7 +70,7 @@ const Input: React.FC<InputProps> = (props) => {
         ></textarea>
       ) : (
         <input
-          type={props.type}
+          {...props}
           id={id}
           name={props.label}
           placeholder={props.placeholder}

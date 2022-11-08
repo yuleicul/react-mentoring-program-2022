@@ -1,6 +1,6 @@
 import styled from 'styled-components'
+import { useEffect, useState } from 'react'
 
-import { useState } from 'react'
 import AddMovieButton from './AddMovieButton'
 import GenreFilters from './GenreFilters'
 import SearchBox from './SearchBox'
@@ -8,10 +8,11 @@ import SearchResults from './SearchResults'
 import SortDropdown from './SortDropdown'
 import Footer from './Footer'
 import AddOrEditMovieModal from './AddOrEditMovieModal'
-
-import NetflixLogo from '../../common/NetflixLogo'
 import DeleteMovieModal from './DeleteMovieModal'
 import SuccessModal from './SuccessModal'
+
+import NetflixLogo from '../../common/NetflixLogo'
+import { getMovieList, Movie } from '../../apis/movie'
 
 const Wrapper = styled.div`
   > .header {
@@ -46,15 +47,28 @@ const HomePage: React.FC = () => {
   const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false)
   const [isSuccessModalVisible, setIsSuccessModalVisible] = useState(false)
 
-  const handleClick = () => {
+  const [searchResults, setSearchResults] = useState<Movie[]>()
+  const [editedMovie, setEditedMovie] = useState<Movie>()
+
+  const handleClickAdd = () => {
     setAddOrEditModalVisible(true)
   }
+
+  const handleEdit = (data: Movie) => {
+    setEditedMovie(data)
+    setAddOrEditModalVisible(true)
+  }
+
+  useEffect(() => {
+    setSearchResults(getMovieList())
+  }, [])
+
   return (
     <Wrapper>
       <div className="header">
         <div className="logoRow">
           <NetflixLogo />
-          <AddMovieButton onClick={handleClick} />
+          <AddMovieButton onClick={handleClickAdd} />
         </div>
         <SearchBox />
       </div>
@@ -66,8 +80,9 @@ const HomePage: React.FC = () => {
         </div>
 
         <SearchResults
-          onEdit={() => setAddOrEditModalVisible(true)}
+          onEdit={handleEdit}
           onDelete={() => setIsDeleteModalVisible(true)}
+          data={searchResults}
         />
       </div>
 
@@ -77,7 +92,11 @@ const HomePage: React.FC = () => {
       {isAddOrEditModalVisible && (
         <AddOrEditMovieModal
           onClose={() => setAddOrEditModalVisible(false)}
-          onSubmit={() => setIsSuccessModalVisible(true)}
+          onSubmit={() => {
+            setAddOrEditModalVisible(false)
+            setIsSuccessModalVisible(true)
+          }}
+          data={editedMovie}
         />
       )}
 

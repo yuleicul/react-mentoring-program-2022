@@ -1,7 +1,6 @@
-import { useState } from 'react'
 import styled from 'styled-components'
-import Dropdown from './MovieCard/Dropdown'
 import MovieCard from './MovieCard'
+import { Movie } from '../../../apis/movie'
 
 const Wrapper = styled.div`
   > .resultSum {
@@ -19,8 +18,9 @@ const Wrapper = styled.div`
   }
 `
 interface SearchResultProps {
-  onEdit: () => void
+  onEdit: (data: Movie) => void
   onDelete: () => void
+  data: Movie[]
 }
 
 const SearchResult: React.FC<SearchResultProps> = (props) => {
@@ -30,62 +30,17 @@ const SearchResult: React.FC<SearchResultProps> = (props) => {
         <strong>39</strong> movies found
       </div>
       <div className="cardContainer">
-        <MovieCard
-          coverSrc="https://th.bing.com/th/id/OIP.UNtn3Qq38k2d6bpecqvpowHaLo?pid=ImgDet&rs=1"
-          title="Mario"
-          genre={['Cartoon', 'Action']}
-          releaseDate="2022"
-          onEdit={props.onEdit}
-          onDelete={props.onDelete}
-        />
-        <MovieCard
-          coverSrc="https://th.bing.com/th/id/OIP.UNtn3Qq38k2d6bpecqvpowHaLo?pid=ImgDet&rs=1"
-          title="Mario"
-          genre={['Cartoon', 'Action']}
-          releaseDate="2022"
-          onEdit={props.onEdit}
-          onDelete={props.onDelete}
-        />
-        <MovieCard
-          coverSrc="https://th.bing.com/th/id/OIP.UNtn3Qq38k2d6bpecqvpowHaLo?pid=ImgDet&rs=1"
-          title="Mario"
-          genre={['Cartoon', 'Action']}
-          releaseDate="2022"
-          onEdit={props.onEdit}
-          onDelete={props.onDelete}
-        />
-        <MovieCard
-          coverSrc="https://th.bing.com/th/id/OIP.UNtn3Qq38k2d6bpecqvpowHaLo?pid=ImgDet&rs=1"
-          title="Mario"
-          genre={['Cartoon', 'Action']}
-          releaseDate="2022"
-          onEdit={props.onEdit}
-          onDelete={props.onDelete}
-        />
-        <MovieCard
-          coverSrc="https://th.bing.com/th/id/OIP.UNtn3Qq38k2d6bpecqvpowHaLo?pid=ImgDet&rs=1"
-          title="Mario"
-          genre={['Cartoon', 'Action']}
-          releaseDate="2022"
-          onEdit={props.onEdit}
-          onDelete={props.onDelete}
-        />
-        <MovieCard
-          coverSrc="https://th.bing.com/th/id/OIP.UNtn3Qq38k2d6bpecqvpowHaLo?pid=ImgDet&rs=1"
-          title="Mario"
-          genre={['Cartoon', 'Action']}
-          releaseDate="2022"
-          onEdit={props.onEdit}
-          onDelete={props.onDelete}
-        />
-        <MovieCard
-          coverSrc="https://th.bing.com/th/id/OIP.UNtn3Qq38k2d6bpecqvpowHaLo?pid=ImgDet&rs=1"
-          title="Mario"
-          genre={['Cartoon', 'Action']}
-          releaseDate="2022"
-          onEdit={props.onEdit}
-          onDelete={props.onDelete}
-        />
+        {props.data?.map((movie) => (
+          <MovieCard
+            key={movie.id}
+            coverSrc={movie.coverSrc}
+            title={movie.title}
+            genre={movie.genre}
+            releaseDate={movie.releaseDate}
+            onEdit={() => props.onEdit(movie)}
+            onDelete={props.onDelete}
+          />
+        ))}
       </div>
     </Wrapper>
   )
