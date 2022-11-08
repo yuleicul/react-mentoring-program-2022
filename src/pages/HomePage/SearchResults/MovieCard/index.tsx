@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 import Dropdown from './Dropdown'
 import MenuButton, { Wrapper as MenuButtonWrapper } from './MenuButton'
@@ -51,6 +51,12 @@ interface MovieCardProps {
 const MovieCard: React.FC<MovieCardProps> = (props) => {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false)
 
+  const dropdownRef = useRef<HTMLInputElement>()
+
+  useEffect(() => {
+    if (isDropdownVisible) dropdownRef.current.focus()
+  }, [isDropdownVisible])
+
   return (
     <Wrapper>
       <img src={props.coverSrc} alt="cover" />
@@ -65,6 +71,7 @@ const MovieCard: React.FC<MovieCardProps> = (props) => {
           onClose={() => setIsDropdownVisible(false)}
           onEdit={props.onEdit}
           onDelete={props.onDelete}
+          ref={dropdownRef}
         />
       )}
     </Wrapper>
