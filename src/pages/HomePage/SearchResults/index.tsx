@@ -20,7 +20,7 @@ const Wrapper = styled.div`
 interface SearchResultProps {
   onEdit: (data: Movie) => void
   onDelete: () => void
-  data: Movie[]
+  data?: Movie[]
 }
 
 const SearchResult: React.FC<SearchResultProps> = (props) => {
