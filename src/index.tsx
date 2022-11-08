@@ -1,4 +1,6 @@
 import React from 'react'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import ReactDOM from 'react-dom/client'
 import { ThemeProvider } from 'styled-components'
 // fix: An import path cannot end with a '.tsx' extension. Consider importing './App' instead.ts(2691)

@@ -34,7 +34,7 @@ class ErrorBoundary extends Component<Props, State> {
           <details style={{ whiteSpace: 'pre-wrap' }}>
             {this.state.error && this.state.error.toString()}
             <br />
-            {this.state.errorInfo.componentStack}
+            {this.state.errorInfo?.componentStack}
           </details>
         </>
       )

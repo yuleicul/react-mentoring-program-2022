@@ -3,7 +3,7 @@ import CloseButtonSvg from './close-button.svg'
 
 interface WrapperProps {
   modalWidth: number
-  height: number
+  height?: number
 }
 
 const Wrapper = styled.div<WrapperProps>`
@@ -47,7 +47,10 @@ interface ModalProps {
 
 const Modal: React.FC<ModalProps> = ({ title, width, children, onClose }) => {
   return (
-    <Wrapper modalWidth={width} height={document.scrollingElement.scrollHeight}>
+    <Wrapper
+      modalWidth={width}
+      height={document.scrollingElement?.scrollHeight}
+    >
       <div className="modal">
         <div className="closeButton" onClick={onClose}>
           <CloseButtonSvg />
