@@ -5,6 +5,7 @@ import Modal from '../../../common/Modal'
 import Selector from '../../../common/Selector'
 import { Wrapper as InputWrapper } from '../../../common/Input'
 import { Wrapper as SelectorWrapper } from '../../../common/Selector'
+import { Movie } from '../../../apis/movie'
 
 const FlexWrapper = styled.div`
   display: flex;
@@ -24,20 +25,47 @@ const FlexWrapper = styled.div`
 interface AddOrEditMovieModalProps {
   onClose: () => void
   onSubmit: () => void
+  data: Movie
 }
 
 const AddOrEditMovieModal: React.FC<AddOrEditMovieModalProps> = (props) => {
+  const { title, releaseDate, movieUrl, rating, genre, runtime, overview } =
+    props.data
   return (
-    <Modal title="ADD MOVIE" width={976} onClose={props.onClose}>
+    <Modal
+      title={props.data ? 'EDIT MOVIE' : 'ADD MOVIE'}
+      width={976}
+      onClose={props.onClose}
+    >
       <Form buttons={['reset', 'submit']} onSubmit={props.onSubmit}>
         <FlexWrapper>
-          <Input type="text" label="TITLE" placeholder="Title" />
-          <Input type="date" label="RELEASE DATE" placeholder="Select Date" />
-          <Input type="text" label="MOVIE URL" placeholder="https://" />
-          <Input type="text" label="RATING" placeholder="7.8" />
+          <Input type="text" label="TITLE" placeholder="Title" value={title} />
+          <Input
+            type="date"
+            label="RELEASE DATE"
+            placeholder="Select Date"
+            value={releaseDate}
+          />
+          <Input
+            type="text"
+            label="MOVIE URL"
+            placeholder="https://"
+            value={movieUrl}
+          />
+          <Input type="text" label="RATING" placeholder="7.8" value={rating} />
           <Selector label="GENRE" placeholder="Select Genre" />
-          <Input type="text" label="RUNTIME" placeholder="minutes" />
-          <Input textarea label="OVERVIEW" placeholder="overview" />
+          <Input
+            type="text"
+            label="RUNTIME"
+            placeholder="minutes"
+            value={runtime}
+          />
+          <Input
+            textarea
+            label="OVERVIEW"
+            placeholder="overview"
+            value={overview}
+          />
         </FlexWrapper>
       </Form>
     </Modal>
