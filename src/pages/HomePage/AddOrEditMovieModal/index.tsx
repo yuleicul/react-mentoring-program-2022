@@ -25,12 +25,12 @@ const FlexWrapper = styled.div`
 interface AddOrEditMovieModalProps {
   onClose: () => void
   onSubmit: () => void
-  data: Movie
+  data?: Movie
 }
 
 const AddOrEditMovieModal: React.FC<AddOrEditMovieModalProps> = (props) => {
   const { title, releaseDate, movieUrl, rating, genre, runtime, overview } =
-    props.data
+    props.data || {}
   return (
     <Modal
       title={props.data ? 'EDIT MOVIE' : 'ADD MOVIE'}

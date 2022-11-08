@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 import Dropdown from './Dropdown'
 import MenuButton, { Wrapper as MenuButtonWrapper } from './MenuButton'
@@ -51,10 +51,11 @@ interface MovieCardProps {
 const MovieCard: React.FC<MovieCardProps> = (props) => {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false)
 
-  const dropdownRef = useRef<HTMLInputElement>()
+  // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/35572#issuecomment-498242139
+  const dropdownRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
-    if (isDropdownVisible) dropdownRef.current.focus()
+    if (isDropdownVisible) dropdownRef.current?.focus()
   }, [isDropdownVisible])
 
   return (

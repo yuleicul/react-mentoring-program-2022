@@ -12,6 +12,8 @@
     "isolatedModules": true,
 
     // ? Module declared with 'export =', and can only be used with a default import when using the 'esModuleInterop' flag.
-    "esModuleInterop": true
+    "esModuleInterop": true,
+
+    "strict": true
   }
 }
