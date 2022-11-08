@@ -8,7 +8,7 @@
 | Module #2: Core concepts            | Oct 12, 2022 - Oct 18, 2022 | 7 days  | ✅  |
 | Module #3: ~~Webpack~~ Rollup       | Oct 19, 2022 - Oct 25, 2022 | 7 days  | ✅  |
 | Module #4: Components (Part 1)      | Oct 26, 2022 - Nov 01, 2022 | 7 days  | ✅  |
-| Module #5: Components (Part 2)      | Nov 02, 2022 - Nov 08, 2022 | 7 days  |     |
+| Module #5: Components (Part 2)      | Nov 02, 2022 - Nov 08, 2022 | 7 days  | ✅  |
 | Module #6: Hooks                    | Nov 09, 2022 - Nov 15, 2022 | 7 days  |     |
 | Module #7: Redux                    | Nov 16, 2022 - Nov 29, 2022 | 14 days |     |
 | Module #8: Forms                    | Nov 30, 2022 - Dec 06, 2022 | 7 days  |     |
@@ -87,6 +87,10 @@ You can click [here](https://excalidraw.com/#json=DeOoPxllmrObvAj66gmMV,26oCT1_D
 ## Module #4: Components (Part 1)
 
 https://github.com/yuleicul/rgm-2022q4-demo/pull/1
+
+## Module #5: Components (Part 2)
+
+https://github.com/yuleicul/rgm-2022q4-demo/pull/3
 
 ## Fixed issues
 
