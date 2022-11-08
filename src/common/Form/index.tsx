@@ -22,7 +22,7 @@ const Form: React.FC<FormProps> = (props) => {
     <Wrapper
       onSubmit={(e) => {
         e.preventDefault()
-        props.onSubmit()
+        props.onSubmit?.()
       }}
       onReset={props.onReset}
     >
