@@ -88,9 +88,43 @@ You can click [here](https://excalidraw.com/#json=DeOoPxllmrObvAj66gmMV,26oCT1_D
 
 https://github.com/yuleicul/rgm-2022q4-demo/pull/1
 
+### Changelog
+
+Add devdep rollup (OMG)
+Update README
+Hover on card to show the menu
+Add item context menu
+Add global styles (temp ways)
+Update styles
+Rename home page
+Add Homepage UI
+Solve problem with importing svg
+Delete unused file
+(WIP) Add global styles by `createGlobalStyle`
+Add dev dep @types/styled-components
+Fix missing shims for Node.js built-ins
+Replace emotion with styled-components
+Remove `--bundleConfigAsCjs`
+Add ErrorBoundary
+Add emotion for styling
+Support the new jsx transform
+
 ## Module #5: Components (Part 2)
 
 https://github.com/yuleicul/rgm-2022q4-demo/pull/3
+
+### Changelog
+
+Update README
+Fix ts warnings
+Turn on ts strict compiler option
+Pass data to edit modal
+Close movie context menu on blur
+Add delete and success modals
+Add Google fonts
+Finish AddMovieModal component
+Fix style overriding
+Add common Input component
 
 ## Fixed issues
 
