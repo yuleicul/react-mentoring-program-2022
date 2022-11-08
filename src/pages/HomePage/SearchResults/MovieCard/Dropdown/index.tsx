@@ -1,3 +1,4 @@
+import { forwardRef } from 'react'
 import styled from 'styled-components'
 import CloseSvg from './close.svg'
 
@@ -23,6 +24,10 @@ const Wrapper = styled.div`
       background-color: ${(props) => props.theme.color.main};
     }
   }
+
+  &:focus {
+    outline: none;
+  }
 `
 
 interface DropdownProps {
@@ -31,9 +36,18 @@ interface DropdownProps {
   onClose: () => void
 }
 
-const Dropdown: React.FC<DropdownProps> = (props) => {
+const Dropdown: React.ForwardRefRenderFunction<
+  HTMLInputElement,
+  DropdownProps
+> = (props, ref) => {
   return (
-    <Wrapper>
+    <Wrapper
+      onBlur={props.onClose}
+      // A negative value (usually tabindex="-1") means that the element is not reachable via sequential keyboard navigation, but could be focused with JavaScript or visually by clicking with the mouse.
+      // https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex
+      tabIndex={-1}
+      ref={ref}
+    >
       <div className="closeButton" onClick={props.onClose}>
         <CloseSvg />
       </div>
@@ -47,4 +61,4 @@ const Dropdown: React.FC<DropdownProps> = (props) => {
   )
 }
 
-export default Dropdown
+export default forwardRef(Dropdown)
