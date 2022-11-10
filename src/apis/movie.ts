@@ -19,6 +19,9 @@ export const getMovieList = (): Movie[] => {
       title: 'Mario',
       genre: ['Cartoon', 'Action'],
       releaseDate: '2022',
+      overview: 'Mario!',
+      rating: 7.9,
+      runtime: 100,
     },
     {
       id: '2',
@@ -27,6 +30,9 @@ export const getMovieList = (): Movie[] => {
       title: 'Mario',
       genre: ['Cartoon', 'Action'],
       releaseDate: '2022',
+      overview: 'Mario!',
+      rating: 7.9,
+      runtime: 100,
     },
     {
       id: '3',
@@ -35,6 +41,9 @@ export const getMovieList = (): Movie[] => {
       title: 'Mario',
       genre: ['Cartoon', 'Action'],
       releaseDate: '2022',
+      overview: 'Mario!',
+      rating: 7.9,
+      runtime: 100,
     },
     {
       id: '4',
@@ -43,6 +52,9 @@ export const getMovieList = (): Movie[] => {
       title: 'Mario',
       genre: ['Cartoon', 'Action'],
       releaseDate: '2022',
+      overview: 'Mario!',
+      rating: 7.9,
+      runtime: 100,
     },
     {
       id: '5',
@@ -51,6 +63,9 @@ export const getMovieList = (): Movie[] => {
       title: 'Mario',
       genre: ['Cartoon', 'Action'],
       releaseDate: '2022',
+      overview: 'Mario!',
+      rating: 7.9,
+      runtime: 100,
     },
     {
       id: '6',
@@ -59,6 +74,9 @@ export const getMovieList = (): Movie[] => {
       title: 'Mario',
       genre: ['Cartoon', 'Action'],
       releaseDate: '2022',
+      overview: 'Mario!',
+      rating: 7.9,
+      runtime: 100,
     },
     {
       id: '7',
@@ -67,6 +85,9 @@ export const getMovieList = (): Movie[] => {
       title: 'Mario',
       genre: ['Cartoon', 'Action'],
       releaseDate: '2022',
+      overview: 'Mario!',
+      rating: 7.9,
+      runtime: 100,
     },
     {
       id: '8',
@@ -75,6 +96,9 @@ export const getMovieList = (): Movie[] => {
       title: 'Mario',
       genre: ['Cartoon', 'Action'],
       releaseDate: '2022',
+      overview: 'Mario!',
+      rating: 7.9,
+      runtime: 100,
     },
   ]
 }

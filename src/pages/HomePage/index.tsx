@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 import AddMovieButton from './AddMovieButton'
 import GenreFilters from './GenreFilters'
@@ -13,8 +13,26 @@ import SuccessModal from './SuccessModal'
 
 import NetflixLogo from '../../common/NetflixLogo'
 import { getMovieList, Movie } from '../../apis/movie'
+import BackHomeButton from './BackHomeButton'
+import MovieDetail from './MovieDetail'
 
 const Wrapper = styled.div`
+  > .movieDetail {
+    background-color: #232323;
+    padding: 35 60;
+    margin-bottom: 10;
+    > .logoRow {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 35;
+      > .textLogo {
+        color: ${(props) => props.theme.color.main};
+        font-size: 20;
+        font-weight: 300;
+      }
+    }
+  }
+
   > .header {
     height: 396;
     background-image: url(/assets/header.png);
@@ -50,6 +68,8 @@ const HomePage: React.FC = () => {
   const [searchResults, setSearchResults] = useState<Movie[]>()
   const [editedMovie, setEditedMovie] = useState<Movie>()
 
+  const [movieDetail, setMovieDetail] = useState<Movie>()
+
   const handleClickAdd = () => {
     setAddOrEditModalVisible(true)
   }
@@ -59,19 +79,34 @@ const HomePage: React.FC = () => {
     setAddOrEditModalVisible(true)
   }
 
+  const handleViewDetail = useCallback((movie: Movie) => {
+    window.scrollTo(0, 0)
+    setMovieDetail(movie)
+  }, [])
+
   useEffect(() => {
     setSearchResults(getMovieList())
   }, [])
 
   return (
     <Wrapper>
-      <div className="header">
-        <div className="logoRow">
-          <NetflixLogo />
-          <AddMovieButton onClick={handleClickAdd} />
+      {movieDetail ? (
+        <div className="movieDetail">
+          <div className="logoRow">
+            <div className="textLogo">netflixroulette</div>
+            <BackHomeButton onClick={() => setMovieDetail(undefined)} />
+          </div>
+          <MovieDetail data={movieDetail} />
         </div>
-        <SearchBox />
-      </div>
+      ) : (
+        <div className="header">
+          <div className="logoRow">
+            <NetflixLogo />
+            <AddMovieButton onClick={handleClickAdd} />
+          </div>
+          <SearchBox />
+        </div>
+      )}
 
       <div className="content">
         <div className="filters">
@@ -83,6 +118,7 @@ const HomePage: React.FC = () => {
           onEdit={handleEdit}
           onDelete={() => setIsDeleteModalVisible(true)}
           data={searchResults}
+          onViewDetail={handleViewDetail}
         />
       </div>
 

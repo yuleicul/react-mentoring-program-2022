@@ -21,6 +21,7 @@ interface SearchResultProps {
   onEdit: (data: Movie) => void
   onDelete: () => void
   data?: Movie[]
+  onViewDetail: (data: Movie) => void
 }
 
 const SearchResult: React.FC<SearchResultProps> = (props) => {
@@ -39,6 +40,7 @@ const SearchResult: React.FC<SearchResultProps> = (props) => {
             releaseDate={movie.releaseDate}
             onEdit={() => props.onEdit(movie)}
             onDelete={props.onDelete}
+            onClick={() => props.onViewDetail(movie)}
           />
         ))}
       </div>
