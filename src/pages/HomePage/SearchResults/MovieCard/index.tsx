@@ -12,6 +12,7 @@ const Wrapper = styled.div`
     width: 319;
     object-fit: fill;
     margin-bottom: 22;
+    cursor: pointer;
   }
   > .title {
     opacity: 0.7;
@@ -46,6 +47,7 @@ interface MovieCardProps {
   releaseDate: string
   onEdit: () => void
   onDelete: () => void
+  onClick: () => void
 }
 
 const MovieCard: React.FC<MovieCardProps> = (props) => {
@@ -60,7 +62,7 @@ const MovieCard: React.FC<MovieCardProps> = (props) => {
 
   return (
     <Wrapper>
-      <img src={props.coverSrc} alt="cover" />
+      <img src={props.coverSrc} alt="cover" onClick={props.onClick} />
       <div className="title">{props.title}</div>
       <div className="genre">{props.genre.join(', ')}</div>
       <div className="date">{props.releaseDate}</div>
