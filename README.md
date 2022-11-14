@@ -9,7 +9,7 @@
 | Module #3: ~~Webpack~~ Rollup       | Oct 19, 2022 - Oct 25, 2022 | 7 days  | ✅  |
 | Module #4: Components (Part 1)      | Oct 26, 2022 - Nov 01, 2022 | 7 days  | ✅  |
 | Module #5: Components (Part 2)      | Nov 02, 2022 - Nov 08, 2022 | 7 days  | ✅  |
-| Module #6: Hooks                    | Nov 09, 2022 - Nov 15, 2022 | 7 days  |     |
+| Module #6: Hooks                    | Nov 09, 2022 - Nov 15, 2022 | 7 days  | ✅  |
 | Module #7: Redux                    | Nov 16, 2022 - Nov 29, 2022 | 14 days |     |
 | Module #8: Forms                    | Nov 30, 2022 - Dec 06, 2022 | 7 days  |     |
 | Module #9: Routing                  | Dec 07, 2022 - Dec 13, 2022 | 7 days  |     |
@@ -115,6 +115,23 @@ https://github.com/yuleicul/rgm-2022q4-demo/pull/3
 
 ### Changelog
 
+Update README
+Fix ts warnings
+Turn on ts strict compiler option
+Pass data to edit modal
+Close movie context menu on blur
+Add delete and success modals
+Add Google fonts
+Finish AddMovieModal component
+Fix style overriding
+Add common Input component
+
+## Module #6: Hooks
+
+Add new custom hook useFetch
+Add movie detail banner
+Add eslint plugin react hooks
+Add changelog to README
 Update README
 Fix ts warnings
 Turn on ts strict compiler option
