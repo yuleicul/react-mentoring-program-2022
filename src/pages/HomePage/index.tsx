@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useState } from 'react'
 
 import AddMovieButton from './AddMovieButton'
 import GenreFilters from './GenreFilters'
@@ -15,6 +15,7 @@ import NetflixLogo from '../../common/NetflixLogo'
 import { getMovieList, Movie } from '../../apis/movie'
 import BackHomeButton from './BackHomeButton'
 import MovieDetail from './MovieDetail'
+import useFetch from '../../hooks/useFetch'
 
 const Wrapper = styled.div`
   > .movieDetail {
@@ -65,9 +66,8 @@ const HomePage: React.FC = () => {
   const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false)
   const [isSuccessModalVisible, setIsSuccessModalVisible] = useState(false)
 
-  const [searchResults, setSearchResults] = useState<Movie[]>()
+  const [searchResults] = useFetch(getMovieList)
   const [editedMovie, setEditedMovie] = useState<Movie>()
-
   const [movieDetail, setMovieDetail] = useState<Movie>()
 
   const handleClickAdd = () => {
@@ -82,10 +82,6 @@ const HomePage: React.FC = () => {
   const handleViewDetail = useCallback((movie: Movie) => {
     window.scrollTo(0, 0)
     setMovieDetail(movie)
-  }, [])
-
-  useEffect(() => {
-    setSearchResults(getMovieList())
   }, [])
 
   return (

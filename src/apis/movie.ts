@@ -10,8 +10,8 @@ export interface Movie {
   overview?: string
 }
 
-export const getMovieList = (): Movie[] => {
-  return [
+export const getMovieList = (): Promise<Movie[]> => {
+  return Promise.resolve([
     {
       id: '1',
       coverSrc:
@@ -100,5 +100,5 @@ export const getMovieList = (): Movie[] => {
       rating: 7.9,
       runtime: 100,
     },
-  ]
+  ])
 }
