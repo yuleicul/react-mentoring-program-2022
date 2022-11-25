@@ -163,6 +163,17 @@ Add changelog to README
 
   I just solved it by adding `"rules": { "react/prop-types": "off" }` to eslintrc, but I don't know why eslint treats this as an warning
 
+- (!) "this" has been rewritten to "undefined"
+  https://rollupjs.org/guide/en/#error-this-is-undefined
+  node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js
+  1: var **extends = (this && this.**extends) || (function () {
+  ^
+  2: var extendStatics = function (d, b) {
+  3: extendStatics = Object.setPrototypeOf ||
+  ...and 5 other occurrences
+
+  https://github.com/reduxjs/redux-toolkit/issues/1466
+
 ## Issues
 
 - (!) Circular dependencies
