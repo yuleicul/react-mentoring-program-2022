@@ -4,6 +4,7 @@ import Dropdown from './Dropdown'
 const Wrapper = styled.div`
   display: flex;
   gap: 30px;
+  align-items: center;
 
   > .title {
     font-size: 16;
@@ -12,12 +13,15 @@ const Wrapper = styled.div`
     text-transform: uppercase;
   }
 `
+interface SortDropdownProps {
+  onChange: (value: string) => void
+}
 
-const SortDropdown: React.FC = () => {
+const SortDropdown: React.FC<SortDropdownProps> = ({ onChange }) => {
   return (
     <Wrapper>
       <div className="title">Sort By</div>
-      <Dropdown />
+      <Dropdown onChange={onChange} />
     </Wrapper>
   )
 }

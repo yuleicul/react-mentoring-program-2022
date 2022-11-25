@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import styled from 'styled-components'
 import SearchButton from './SearchButton'
 
@@ -27,13 +28,25 @@ const Wrapper = styled.div`
   }
 `
 
-const SearchBox: React.FC = () => {
+interface SearchBoxProps {
+  onSearch: (keywords: string) => void
+}
+
+const SearchBox: React.FC<SearchBoxProps> = ({ onSearch }) => {
+  const [value, setValue] = useState('')
+
   return (
     <Wrapper>
       <div className="title">FIND YOUR MOVIE</div>
       <div className="inputContainer">
-        <input type="text" placeholder="What do you want to watch?" />
-        <SearchButton>SEARCH</SearchButton>
+        <input
+          type="text"
+          placeholder="What do you want to watch?"
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          onKeyUp={(e) => e.key === 'Enter' && onSearch(value)}
+        />
+        <SearchButton onClick={() => onSearch(value)}>SEARCH</SearchButton>
       </div>
     </Wrapper>
   )

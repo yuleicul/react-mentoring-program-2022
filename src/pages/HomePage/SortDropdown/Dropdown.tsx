@@ -4,28 +4,53 @@ const Wrapper = styled.div`
   display: flex;
   gap: 13px;
 
-  > .selected {
-    color: white;
-    font-size: 16;
-    text-transform: uppercase;
+  > form {
+    margin-block-end: 0; // override
+    position: relative;
+    > select {
+      appearance: none; // override
+      background-color: transparent; // override
+      border: none; // override
+      color: white;
+      font-size: 16;
+      text-transform: uppercase;
+      width: 160;
+      padding: 5;
+      cursor: pointer;
+      > option {
+        background-color: #232323;
+        text-transform: initial;
+      }
+    }
+    /* Triangle */
+    &::after {
+      content: '';
+      border: 6px solid;
+      border-color: #f65261;
+      border-left-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      position: absolute;
+      top: 11;
+      right: 4;
+    }
   }
 `
 
-const Triangle = styled.div`
-  border: 6px solid;
-  border-color: ${(props) => props.theme.color.main};
-  border-left-color: transparent;
-  border-right-color: transparent;
-  border-bottom-color: transparent;
-  position: relative;
-  top: 6;
-`
+interface DropdownProps {
+  onChange: (value: string) => void
+}
 
-const Dropdown: React.FC = () => {
+const Dropdown: React.FC<DropdownProps> = ({ onChange }) => {
   return (
     <Wrapper>
-      <div className="selected">Release Date</div>
-      <Triangle />
+      {/* @ts-ignore */}
+      <form onChange={(e) => onChange(e.target.value)}>
+        <select name="sortBy">
+          <option value="release_date">Release Date</option>
+          <option value="vote_average">Rating</option>
+        </select>
+      </form>
     </Wrapper>
   )
 }

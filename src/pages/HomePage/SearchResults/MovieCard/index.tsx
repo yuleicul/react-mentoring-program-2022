@@ -18,10 +18,12 @@ const Wrapper = styled.div`
     opacity: 0.7;
     font-size: 18;
     margin-bottom: 8;
+    max-width: 266;
   }
   > .genre {
     opacity: 0.5;
     font-size: 14;
+    max-width: 319;
   }
   > .date {
     opacity: 0.7;
@@ -32,7 +34,7 @@ const Wrapper = styled.div`
     padding: 4 8;
     position: absolute;
     right: 0;
-    bottom: 25;
+    top: 474;
   }
 
   &:hover ${MenuButtonWrapper} {
@@ -62,10 +64,10 @@ const MovieCard: React.FC<MovieCardProps> = (props) => {
 
   return (
     <Wrapper>
-      <img src={props.coverSrc} alt="cover" onClick={props.onClick} />
+      <img src={props.coverSrc} alt={props.title} onClick={props.onClick} />
       <div className="title">{props.title}</div>
       <div className="genre">{props.genre.join(', ')}</div>
-      <div className="date">{props.releaseDate}</div>
+      <div className="date">{props.releaseDate.slice(0, 4)}</div>
 
       <MenuButton onClick={() => setIsDropdownVisible(true)} />
 

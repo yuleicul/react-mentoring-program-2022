@@ -1,6 +1,6 @@
 import styled from 'styled-components'
+import { Movie } from '../../../store/moviesSlice'
 import MovieCard from './MovieCard'
-import { Movie } from '../../../apis/movie'
 
 const Wrapper = styled.div`
   > .resultSum {
@@ -22,22 +22,23 @@ interface SearchResultProps {
   onDelete: () => void
   data?: Movie[]
   onViewDetail: (data: Movie) => void
+  totalAmount: number
 }
 
 const SearchResult: React.FC<SearchResultProps> = (props) => {
   return (
     <Wrapper>
       <div className="resultSum">
-        <strong>39</strong> movies found
+        <strong>{props.totalAmount}</strong> movies found
       </div>
       <div className="cardContainer">
         {props.data?.map((movie) => (
           <MovieCard
             key={movie.id}
-            coverSrc={movie.coverSrc}
+            coverSrc={movie.poster_path}
             title={movie.title}
-            genre={movie.genre}
-            releaseDate={movie.releaseDate}
+            genre={movie.genres}
+            releaseDate={movie.release_date}
             onEdit={() => props.onEdit(movie)}
             onDelete={props.onDelete}
             onClick={() => props.onViewDetail(movie)}

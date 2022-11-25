@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 import AddMovieButton from './AddMovieButton'
 import GenreFilters from './GenreFilters'
@@ -12,10 +12,10 @@ import DeleteMovieModal from './DeleteMovieModal'
 import SuccessModal from './SuccessModal'
 
 import NetflixLogo from '../../common/NetflixLogo'
-import { getMovieList, Movie } from '../../apis/movie'
 import BackHomeButton from './BackHomeButton'
 import MovieDetail from './MovieDetail'
-import useFetch from '../../hooks/useFetch'
+import { fetchMovieList, Movie, selectAll } from '../../store/moviesSlice'
+import { useAppDispatch, useAppSelector } from '../../store'
 
 const Wrapper = styled.div`
   > .movieDetail {
@@ -62,13 +62,29 @@ const Wrapper = styled.div`
 `
 
 const HomePage: React.FC = () => {
+  const dispatch = useAppDispatch()
+  const searchResult = useAppSelector(selectAll)
+
   const [isAddOrEditModalVisible, setAddOrEditModalVisible] = useState(false)
   const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false)
   const [isSuccessModalVisible, setIsSuccessModalVisible] = useState(false)
 
-  const [searchResults] = useFetch(getMovieList)
   const [editedMovie, setEditedMovie] = useState<Movie>()
   const [movieDetail, setMovieDetail] = useState<Movie>()
+
+  const [keywords, setKeywords] = useState('')
+  const [sortBy, setSortBy] = useState('release_date')
+  const [filter, setFilter] = useState('')
+
+  useEffect(() => {
+    dispatch(
+      fetchMovieList({
+        sortBy: sortBy,
+        search: keywords,
+        filter: filter,
+      })
+    )
+  }, [dispatch, filter, keywords, sortBy])
 
   const handleClickAdd = () => {
     setAddOrEditModalVisible(true)
@@ -100,20 +116,21 @@ const HomePage: React.FC = () => {
             <NetflixLogo />
             <AddMovieButton onClick={handleClickAdd} />
           </div>
-          <SearchBox />
+          <SearchBox onSearch={(keywords) => setKeywords(keywords)} />
         </div>
       )}
 
       <div className="content">
         <div className="filters">
-          <GenreFilters />
-          <SortDropdown />
+          <GenreFilters onChange={(value) => setFilter(value)} />
+          <SortDropdown onChange={(value) => setSortBy(value)} />
         </div>
 
         <SearchResults
           onEdit={handleEdit}
           onDelete={() => setIsDeleteModalVisible(true)}
-          data={searchResults}
+          data={searchResult.data}
+          totalAmount={searchResult.totalAmount}
           onViewDetail={handleViewDetail}
         />
       </div>

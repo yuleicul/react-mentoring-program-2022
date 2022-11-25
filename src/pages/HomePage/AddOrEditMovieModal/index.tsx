@@ -5,7 +5,7 @@ import Modal from '../../../common/Modal'
 import Selector from '../../../common/Selector'
 import { Wrapper as InputWrapper } from '../../../common/Input'
 import { Wrapper as SelectorWrapper } from '../../../common/Selector'
-import { Movie } from '../../../apis/movie'
+import { Movie } from '../../../store/moviesSlice'
 
 const FlexWrapper = styled.div`
   display: flex;
@@ -29,8 +29,15 @@ interface AddOrEditMovieModalProps {
 }
 
 const AddOrEditMovieModal: React.FC<AddOrEditMovieModalProps> = (props) => {
-  const { title, releaseDate, movieUrl, rating, genre, runtime, overview } =
-    props.data || {}
+  const {
+    title,
+    release_date,
+    poster_path,
+    vote_average,
+    genres,
+    runtime,
+    overview,
+  } = props.data || {}
   return (
     <Modal
       title={props.data ? 'EDIT MOVIE' : 'ADD MOVIE'}
@@ -44,15 +51,20 @@ const AddOrEditMovieModal: React.FC<AddOrEditMovieModalProps> = (props) => {
             type="date"
             label="RELEASE DATE"
             placeholder="Select Date"
-            value={releaseDate}
+            value={release_date}
           />
           <Input
             type="text"
             label="MOVIE URL"
             placeholder="https://"
-            value={movieUrl}
+            value={poster_path}
           />
-          <Input type="text" label="RATING" placeholder="7.8" value={rating} />
+          <Input
+            type="text"
+            label="RATING"
+            placeholder="7.8"
+            value={vote_average}
+          />
           <Selector label="GENRE" placeholder="Select Genre" />
           <Input
             type="text"

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Movie } from '../../../apis/movie'
+import { Movie } from '../../../store/moviesSlice'
 
 const Wrapper = styled.div`
   display: flex;
@@ -63,15 +63,15 @@ const minutesToHour = (min: number) => {
 const MovieDetail: React.FC<MovieDetailProps> = ({ data }) => {
   return (
     <Wrapper>
-      <img src={data.coverSrc} alt={data.title} width={323} height={486} />
+      <img src={data.poster_path} alt={data.title} width={323} height={486} />
       <div className="details">
         <div className="titleAndRating">
           <div className="title">{data.title}</div>
-          <div className="rating">{data.rating}</div>
+          <div className="rating">{data.vote_average}</div>
         </div>
-        <div className="genre">{data.genre.join(', ')}</div>
+        <div className="genre">{data.genres.join(', ')}</div>
         <div className="time">
-          <div className="releaseDate">{data.releaseDate}</div>
+          <div className="releaseDate">{data.release_date}</div>
           <div className="runtime">
             {data.runtime && minutesToHour(data.runtime)}
           </div>
