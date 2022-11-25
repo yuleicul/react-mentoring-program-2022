@@ -128,20 +128,12 @@ Add common Input component
 
 ## Module #6: Hooks
 
+Fix changelog
+Update changelog
 Add new custom hook useFetch
 Add movie detail banner
 Add eslint plugin react hooks
 Add changelog to README
-Update README
-Fix ts warnings
-Turn on ts strict compiler option
-Pass data to edit modal
-Close movie context menu on blur
-Add delete and success modals
-Add Google fonts
-Finish AddMovieModal component
-Fix style overriding
-Add common Input component
 
 ## Fixed issues
 
