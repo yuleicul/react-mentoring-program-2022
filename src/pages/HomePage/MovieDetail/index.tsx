@@ -25,7 +25,11 @@ const Wrapper = styled.div`
       > .rating {
         border: 1px white solid;
         border-radius: 50%;
-        padding: 15;
+        height: 60px;
+        width: 60px;
+        flex-shrink: 0;
+        line-height: 60px;
+        text-align: center;
       }
     }
 
@@ -67,7 +71,9 @@ const MovieDetail: React.FC<MovieDetailProps> = ({ data }) => {
       <div className="details">
         <div className="titleAndRating">
           <div className="title">{data.title}</div>
-          <div className="rating">{data.vote_average}</div>
+          {data.vote_average ? (
+            <div className="rating">{data.vote_average}</div>
+          ) : null}
         </div>
         <div className="genre">{data.genres.join(', ')}</div>
         <div className="time">
