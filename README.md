@@ -128,12 +128,29 @@ Add common Input component
 
 ## Module #6: Hooks
 
+https://github.com/yuleicul/rgm-2022q4-demo/pull/4
+
+### Changelog
+
 Fix changelog
 Update changelog
 Add new custom hook useFetch
 Add movie detail banner
 Add eslint plugin react hooks
 Add changelog to README
+
+## Module #7: Redux
+
+https://github.com/yuleicul/rgm-2022q4-demo/pull/6
+
+### Changelog
+
+Update changelog
+Fix styles of rating score
+Import png as data-uris
+Fix rollup warning 'this' has been rewritten to 'undefined'
+Use Redux to fetch movies
+Add Redux store
 
 ## Fixed issues
 
