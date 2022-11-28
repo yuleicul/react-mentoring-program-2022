@@ -16,6 +16,7 @@ import BackHomeButton from './BackHomeButton'
 import MovieDetail from './MovieDetail'
 import { fetchMovieList, Movie, selectAll } from '../../store/moviesSlice'
 import { useAppDispatch, useAppSelector } from '../../store'
+import headerImage from './header.png'
 
 const Wrapper = styled.div`
   > .movieDetail {
@@ -36,7 +37,7 @@ const Wrapper = styled.div`
 
   > .header {
     height: 396;
-    background-image: url(/assets/header.png);
+    background-image: url(${headerImage});
     background-repeat: no-repeat;
     background-size: cover;
     padding: 20 60;

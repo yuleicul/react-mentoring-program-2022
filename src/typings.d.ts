@@ -7,3 +7,9 @@ declare module '*.svg' {
   const src: typeof ReactComponent
   export default src
 }
+
+// https://github.com/rollup/rollup-plugin-url/issues/22#issuecomment-497310043
+declare module '*.png' {
+  const value: string
+  export default value
+}

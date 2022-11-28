@@ -9,7 +9,7 @@ import typescript from '@rollup/plugin-typescript'
 import { terser } from 'rollup-plugin-terser'
 import nodePolyfills from 'rollup-plugin-node-polyfills'
 import svgr from '@svgr/rollup'
-import copy from 'rollup-plugin-copy'
+import url from '@rollup/plugin-url'
 
 export default {
   input: 'src/index.tsx',
@@ -36,6 +36,11 @@ export default {
         port: 3000,
       }),
     process.env.NODE_ENV === 'development' && livereload(),
+
+    // https://github.com/rollup/plugins/tree/master/packages/url
+    url({
+      exclude: '**/*.svg',
+    }),
 
     // https://www.npmjs.com/package/@svgr/rollup
     svgr(),
@@ -75,11 +80,6 @@ export default {
     htmlTemplate({
       template: 'src/index.html',
       target: 'index.html',
-    }),
-
-    // https://github.com/vladshcherbin/rollup-plugin-copy
-    copy({
-      targets: [{ src: 'src/assets/*', dest: 'dist/assets' }],
     }),
   ],
 }
