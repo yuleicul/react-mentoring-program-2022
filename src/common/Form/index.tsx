@@ -12,17 +12,18 @@ const Wrapper = styled.form`
 
 interface FormProps {
   children?: React.ReactNode
-  onSubmit?: () => void
+  onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void
   onReset?: () => void
   buttons?: string[]
 }
 
+// todo: delete component
 const Form: React.FC<FormProps> = (props) => {
   return (
     <Wrapper
       onSubmit={(e) => {
-        e.preventDefault()
-        props.onSubmit?.()
+        // e.preventDefault()
+        props.onSubmit?.(e)
       }}
       onReset={props.onReset}
     >

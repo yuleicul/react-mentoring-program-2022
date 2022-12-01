@@ -17,6 +17,7 @@ import MovieDetail from './MovieDetail'
 import { fetchMovieList, Movie, selectAll } from '../../store/moviesSlice'
 import { useAppDispatch, useAppSelector } from '../../store'
 import headerImage from './header.png'
+import { useDeleteMovie, useSaveMovie } from '../../hooks/mutation'
 
 const Wrapper = styled.div`
   > .movieDetail {
@@ -76,6 +77,14 @@ const HomePage: React.FC = () => {
   const [keywords, setKeywords] = useState('')
   const [sortBy, setSortBy] = useState('release_date')
   const [filter, setFilter] = useState('')
+
+  const [saveMovie, isSaving] = useSaveMovie({
+    onSuccess: () => {
+      setAddOrEditModalVisible(false)
+      setIsSuccessModalVisible(true)
+    },
+  })
+  const [deleteMovie, isDeleting] = useDeleteMovie()
 
   useEffect(() => {
     dispatch(
@@ -142,10 +151,7 @@ const HomePage: React.FC = () => {
       {isAddOrEditModalVisible && (
         <AddOrEditMovieModal
           onClose={() => setAddOrEditModalVisible(false)}
-          onSubmit={() => {
-            setAddOrEditModalVisible(false)
-            setIsSuccessModalVisible(true)
-          }}
+          onSubmit={(data) => saveMovie(data)}
           data={editedMovie}
         />
       )}

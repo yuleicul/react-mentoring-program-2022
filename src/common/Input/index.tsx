@@ -1,4 +1,4 @@
-import { HTMLInputTypeAttribute, useId } from 'react'
+import { forwardRef, useId } from 'react'
 import styled from 'styled-components'
 import CalendarIcon from './calendar-icon.svg'
 
@@ -52,32 +52,20 @@ export const Wrapper = styled.div`
 `
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  textarea?: boolean
   label: string
 }
 
-const Input: React.FC<InputProps> = (props) => {
+const Input: React.ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
+  { label, ...inputProps },
+  ref
+) => {
   const id = useId()
   return (
     <Wrapper>
-      <label htmlFor={id}>{props.label}</label>
+      <label htmlFor={id}>{label}</label>
+      <input ref={ref} {...inputProps} id={id} name={label}></input>
 
-      {props.textarea ? (
-        <textarea
-          name="Text1"
-          rows={7}
-          placeholder={props.placeholder}
-        ></textarea>
-      ) : (
-        <input
-          {...props}
-          id={id}
-          name={props.label}
-          placeholder={props.placeholder}
-        ></input>
-      )}
-
-      {props.type === 'date' && (
+      {inputProps.type === 'date' && (
         <div className="calendarIcon">
           <CalendarIcon />
         </div>
@@ -86,4 +74,4 @@ const Input: React.FC<InputProps> = (props) => {
   )
 }
 
-export default Input
+export default forwardRef(Input)
