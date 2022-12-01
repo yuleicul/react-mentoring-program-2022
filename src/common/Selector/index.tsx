@@ -34,28 +34,33 @@ export const Wrapper = styled.div`
     top: 57;
     right: 20;
   }
+  > .errorMessage {
+    color: white;
+    position: absolute;
+    font-size: 14px;
+  }
 `
 
 interface SelectorProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
   label: string
-  multiple?: boolean
-  placeholder: string
+  errorMessage?: string
 }
 
 const Selector: React.ForwardRefRenderFunction<
   HTMLSelectElement,
   SelectorProps
-> = ({ label, ...selectorProps }, ref) => {
+> = ({ label, errorMessage, ...selectorProps }, ref) => {
   const id = useId()
   return (
     <Wrapper>
       <label htmlFor={id}>{label}</label>
-      <select {...selectorProps} ref={ref} name={label} id={id}>
+      <select {...selectorProps} ref={ref} id={id}>
         <option value="Crime">Crime</option>
         <option value="Documentary">Documentary </option>
         <option value="Horror">Horror</option>
         <option value="Comedy">Comedy</option>
       </select>
+      {errorMessage && <div className="errorMessage">{errorMessage}</div>}
     </Wrapper>
   )
 }

@@ -18,22 +18,29 @@ export const Wrapper = styled.div`
     background-color: rgba(50, 50, 50, 0.8);
     color: white;
   }
+  > .errorMessage {
+    color: white;
+    position: absolute;
+    font-size: 14px;
+  }
 `
 
 interface TextareaProps
   extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   label: string
+  errorMessage?: string
 }
 
 const Textarea: React.ForwardRefRenderFunction<
   HTMLTextAreaElement,
   TextareaProps
-> = ({ label, ...selectProps }, ref) => {
+> = ({ label, errorMessage, ...selectProps }, ref) => {
   const id = useId()
   return (
     <Wrapper>
       <label htmlFor={id}>{label}</label>
-      <textarea {...selectProps} ref={ref} name={label} rows={7}></textarea>
+      <textarea {...selectProps} ref={ref} rows={7}></textarea>
+      {errorMessage && <div className="errorMessage">{errorMessage}</div>}
     </Wrapper>
   )
 }
