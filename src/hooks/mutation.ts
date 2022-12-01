@@ -38,6 +38,10 @@ export const useSaveMovie = (options?: MutationOptions) => {
     (data) =>
       fetch(`${API_SERVER}/movies`, {
         method: data.id ? 'PUT' : 'POST',
+        body: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json',
+        },
       }),
     options
   )

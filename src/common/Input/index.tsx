@@ -4,10 +4,12 @@ import CalendarIcon from './calendar-icon.svg'
 
 export const Wrapper = styled.div`
   position: relative;
+
   > label {
     font-size: 16;
     color: ${(props) => props.theme.color.main};
   }
+
   > input {
     display: block;
     margin-top: 13;
@@ -33,43 +35,42 @@ export const Wrapper = styled.div`
       background: transparent;
     }
   }
-  > textarea {
-    display: block;
-    margin-top: 13;
-    width: 100%;
-    font-size: 20;
-    padding: 18;
-    border: none; // override default
-    border-radius: 4px;
-    background-color: rgba(50, 50, 50, 0.8);
-    color: white;
-  }
+
   > .calendarIcon {
     position: absolute;
     top: 47;
     right: 18;
   }
+
+  > .errorMessage {
+    color: white;
+    position: absolute;
+    font-size: 14px;
+  }
 `
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string
+  errorMessage?: string
 }
 
 const Input: React.ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
-  { label, ...inputProps },
+  { label, errorMessage, ...inputProps },
   ref
 ) => {
   const id = useId()
   return (
     <Wrapper>
       <label htmlFor={id}>{label}</label>
-      <input ref={ref} {...inputProps} id={id} name={label}></input>
+      <input ref={ref} {...inputProps} id={id}></input>
 
       {inputProps.type === 'date' && (
         <div className="calendarIcon">
           <CalendarIcon />
         </div>
       )}
+
+      {errorMessage && <div className="errorMessage">{errorMessage}</div>}
     </Wrapper>
   )
 }

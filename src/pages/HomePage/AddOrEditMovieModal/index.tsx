@@ -25,6 +25,13 @@ const FlexWrapper = styled.div`
   }
 `
 
+const FlexFooter = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 60;
+`
+
 interface AddOrEditMovieModalProps {
   onClose: () => void
   onSubmit: (data: Movie) => void
@@ -41,7 +48,7 @@ const AddOrEditMovieModal: React.FC<AddOrEditMovieModalProps> = (props) => {
     defaultValues: props.data,
   })
 
-  console.log(watch())
+  console.log('error', errors)
 
   return (
     <Modal
@@ -49,55 +56,75 @@ const AddOrEditMovieModal: React.FC<AddOrEditMovieModalProps> = (props) => {
       width={976}
       onClose={props.onClose}
     >
-      <Form onSubmit={handleSubmit(props.onSubmit)}>
+      <form onSubmit={handleSubmit(props.onSubmit)}>
         <FlexWrapper>
           <Input
             type="text"
             label="TITLE"
             placeholder="Title"
-            {...register('title')}
+            errorMessage={errors.title?.message}
+            {...register('title', { required: 'Required' })}
           />
+
           <Input
             type="date"
             label="RELEASE DATE"
             placeholder="Select Date"
-            {...register('release_date')}
+            errorMessage={errors.release_date?.message}
+            {...register('release_date', {
+              required: 'Required',
+            })}
           />
           <Input
             type="text"
             label="MOVIE URL"
             placeholder="https://"
-            {...register('poster_path')}
+            errorMessage={errors.poster_path?.message}
+            {...register('poster_path', {
+              required: 'Required',
+            })}
           />
           <Input
             type="text"
             label="RATING"
             placeholder="7.8"
-            {...register('vote_average')}
+            errorMessage={errors.vote_average?.message}
+            {...register('vote_average', {
+              required: 'Required',
+            })}
           />
           <Selector
             label="GENRE"
             placeholder="Select Genre"
-            {...register('genres')}
+            errorMessage={errors.genres?.message}
+            {...register('genres', {
+              required: 'Required',
+            })}
           />
           <Input
             type="text"
             label="RUNTIME"
             placeholder="minutes"
-            {...register('runtime')}
+            errorMessage={errors.runtime?.message}
+            {...register('runtime', {
+              required: 'Required',
+            })}
           />
           <Textarea
             label="OVERVIEW"
             placeholder="overview"
-            {...register('overview')}
+            errorMessage={errors.overview?.message}
+            {...register('overview', {
+              required: 'Required',
+            })}
           />
         </FlexWrapper>
 
-        <div className="footer">
+        <FlexFooter>
           <InputButton plain type="reset" value="RESET" />
           <InputButton type="submit" value="SUBMIT" />
-        </div>
-      </Form>
+        </FlexFooter>
+      </form>
     </Modal>
   )
 }
