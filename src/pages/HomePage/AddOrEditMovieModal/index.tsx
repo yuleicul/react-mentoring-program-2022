@@ -6,6 +6,9 @@ import Selector from '../../../common/Selector'
 import { Wrapper as InputWrapper } from '../../../common/Input'
 import { Wrapper as SelectorWrapper } from '../../../common/Selector'
 import { Movie } from '../../../store/moviesSlice'
+import { useForm } from 'react-hook-form'
+import InputButton from '../../../common/InputButton'
+import Textarea from '../../../common/Textarea'
 
 const FlexWrapper = styled.div`
   display: flex;
@@ -24,61 +27,76 @@ const FlexWrapper = styled.div`
 
 interface AddOrEditMovieModalProps {
   onClose: () => void
-  onSubmit: () => void
+  onSubmit: (data: Movie) => void
   data?: Movie
 }
 
 const AddOrEditMovieModal: React.FC<AddOrEditMovieModalProps> = (props) => {
   const {
-    title,
-    release_date,
-    poster_path,
-    vote_average,
-    genres,
-    runtime,
-    overview,
-  } = props.data || {}
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<Movie>({
+    defaultValues: props.data,
+  })
+
+  console.log(watch())
+
   return (
     <Modal
       title={props.data ? 'EDIT MOVIE' : 'ADD MOVIE'}
       width={976}
       onClose={props.onClose}
     >
-      <Form buttons={['reset', 'submit']} onSubmit={props.onSubmit}>
+      <Form onSubmit={handleSubmit(props.onSubmit)}>
         <FlexWrapper>
-          <Input type="text" label="TITLE" placeholder="Title" value={title} />
+          <Input
+            type="text"
+            label="TITLE"
+            placeholder="Title"
+            {...register('title')}
+          />
           <Input
             type="date"
             label="RELEASE DATE"
             placeholder="Select Date"
-            value={release_date}
+            {...register('release_date')}
           />
           <Input
             type="text"
             label="MOVIE URL"
             placeholder="https://"
-            value={poster_path}
+            {...register('poster_path')}
           />
           <Input
             type="text"
             label="RATING"
             placeholder="7.8"
-            value={vote_average}
+            {...register('vote_average')}
           />
-          <Selector label="GENRE" placeholder="Select Genre" />
+          <Selector
+            label="GENRE"
+            placeholder="Select Genre"
+            {...register('genres')}
+          />
           <Input
             type="text"
             label="RUNTIME"
             placeholder="minutes"
-            value={runtime}
+            {...register('runtime')}
           />
-          <Input
-            textarea
+          <Textarea
             label="OVERVIEW"
             placeholder="overview"
-            value={overview}
+            {...register('overview')}
           />
         </FlexWrapper>
+
+        <div className="footer">
+          <InputButton plain type="reset" value="RESET" />
+          <InputButton type="submit" value="SUBMIT" />
+        </div>
       </Form>
     </Modal>
   )

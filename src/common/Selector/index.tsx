@@ -1,4 +1,4 @@
-import { useId } from 'react'
+import { forwardRef, useId } from 'react'
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`
@@ -36,23 +36,21 @@ export const Wrapper = styled.div`
   }
 `
 
-interface SelectorProps {
+interface SelectorProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
   label: string
   multiple?: boolean
   placeholder: string
 }
 
-const Selector: React.FC<SelectorProps> = (props) => {
+const Selector: React.ForwardRefRenderFunction<
+  HTMLSelectElement,
+  SelectorProps
+> = ({ label, ...selectorProps }, ref) => {
   const id = useId()
   return (
     <Wrapper>
-      <label htmlFor={id}>{props.label}</label>
-      <select
-        name={props.label}
-        id={id}
-        multiple={props.multiple}
-        placeholder={props.placeholder}
-      >
+      <label htmlFor={id}>{label}</label>
+      <select {...selectorProps} ref={ref} name={label} id={id}>
         <option value="Crime">Crime</option>
         <option value="Documentary">Documentary </option>
         <option value="Horror">Horror</option>
@@ -62,4 +60,4 @@ const Selector: React.FC<SelectorProps> = (props) => {
   )
 }
 
-export default Selector
+export default forwardRef(Selector)
