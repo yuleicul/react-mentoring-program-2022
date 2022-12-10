@@ -19,7 +19,7 @@ const Wrapper = styled.div`
 `
 interface SearchResultProps {
   onEdit: (data: Movie) => void
-  onDelete: () => void
+  onDelete: (id: Pick<Movie, 'id'>) => void
   data?: Movie[]
   onViewDetail: (data: Movie) => void
   totalAmount: number
@@ -40,7 +40,8 @@ const SearchResult: React.FC<SearchResultProps> = (props) => {
             genre={movie.genres}
             releaseDate={movie.release_date}
             onEdit={() => props.onEdit(movie)}
-            onDelete={props.onDelete}
+            // @ts-ignore
+            onDelete={() => props.onDelete(movie.id)}
             onClick={() => props.onViewDetail(movie)}
           />
         ))}

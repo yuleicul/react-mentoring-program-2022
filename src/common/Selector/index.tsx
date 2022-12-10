@@ -1,5 +1,21 @@
 import { forwardRef, useId } from 'react'
 import styled from 'styled-components'
+import ErrorMessage from '../ErrorMessage'
+
+const GENRES = [
+  'Crime',
+  'Documentary',
+  'Horror',
+  'Comedy',
+  'Action',
+  'Adventure',
+  'Science Fiction',
+  'Fantasy',
+  'Thriller',
+  'Family',
+  'Mystery',
+  'Drama',
+]
 
 export const Wrapper = styled.div`
   position: relative;
@@ -34,11 +50,6 @@ export const Wrapper = styled.div`
     top: 57;
     right: 20;
   }
-  > .errorMessage {
-    color: white;
-    position: absolute;
-    font-size: 14px;
-  }
 `
 
 interface SelectorProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
@@ -51,16 +62,19 @@ const Selector: React.ForwardRefRenderFunction<
   SelectorProps
 > = ({ label, errorMessage, ...selectorProps }, ref) => {
   const id = useId()
+
   return (
     <Wrapper>
       <label htmlFor={id}>{label}</label>
       <select {...selectorProps} ref={ref} id={id}>
-        <option value="Crime">Crime</option>
-        <option value="Documentary">Documentary </option>
-        <option value="Horror">Horror</option>
-        <option value="Comedy">Comedy</option>
+        <option value="">--Genre--</option>
+        {GENRES.map((genre) => (
+          <option value={genre} key={genre}>
+            {genre}
+          </option>
+        ))}
       </select>
-      {errorMessage && <div className="errorMessage">{errorMessage}</div>}
+      {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
     </Wrapper>
   )
 }
