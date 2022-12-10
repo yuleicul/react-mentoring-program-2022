@@ -17,12 +17,11 @@ interface FormProps {
   buttons?: string[]
 }
 
-// todo: delete component
 const Form: React.FC<FormProps> = (props) => {
   return (
     <Wrapper
       onSubmit={(e) => {
-        // e.preventDefault()
+        e.preventDefault()
         props.onSubmit?.(e)
       }}
       onReset={props.onReset}

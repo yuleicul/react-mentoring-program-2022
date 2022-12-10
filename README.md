@@ -10,8 +10,8 @@
 | Module #4: Components (Part 1)      | Oct 26, 2022 - Nov 01, 2022 | 7 days  | ✅  |
 | Module #5: Components (Part 2)      | Nov 02, 2022 - Nov 08, 2022 | 7 days  | ✅  |
 | Module #6: Hooks                    | Nov 09, 2022 - Nov 15, 2022 | 7 days  | ✅  |
-| Module #7: Redux                    | Nov 16, 2022 - Nov 29, 2022 | 14 days |     |
-| Module #8: Forms                    | Nov 30, 2022 - Dec 06, 2022 | 7 days  |     |
+| Module #7: Redux                    | Nov 16, 2022 - Nov 29, 2022 | 14 days | ✅  |
+| Module #8: Forms                    | Nov 30, 2022 - Dec 06, 2022 | 7 days  | ✅  |
 | Module #9: Routing                  | Dec 07, 2022 - Dec 13, 2022 | 7 days  |     |
 | Module #10: Testing                 | Dec 14, 2022 - Dec 20, 2022 | 7 days  |     |
 | Module #11: SSR                     | Dec 21, 2022 - Dec 27, 2022 | 7 days  |     |

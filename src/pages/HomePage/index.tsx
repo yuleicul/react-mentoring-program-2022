@@ -17,7 +17,7 @@ import MovieDetail from './MovieDetail'
 import { fetchMovieList, Movie, selectAll } from '../../store/moviesSlice'
 import { useAppDispatch, useAppSelector } from '../../store'
 import headerImage from './header.png'
-import { useDeleteMovie, useSaveMovie } from '../../hooks/mutation'
+import { useSaveMovie } from '../../hooks/mutation'
 
 const Wrapper = styled.div`
   > .movieDetail {
@@ -73,18 +73,25 @@ const HomePage: React.FC = () => {
 
   const [editedMovie, setEditedMovie] = useState<Movie>()
   const [movieDetail, setMovieDetail] = useState<Movie>()
+  const [deletedMovieId, setDeletedMovieId] = useState<Pick<Movie, 'id'>>()
 
   const [keywords, setKeywords] = useState('')
   const [sortBy, setSortBy] = useState('release_date')
   const [filter, setFilter] = useState('')
 
-  const [saveMovie, isSaving] = useSaveMovie({
+  const [saveMovie] = useSaveMovie({
     onSuccess: () => {
+      dispatch(
+        fetchMovieList({
+          sortBy: sortBy,
+          search: keywords,
+          filter: filter,
+        })
+      )
       setAddOrEditModalVisible(false)
       setIsSuccessModalVisible(true)
     },
   })
-  const [deleteMovie, isDeleting] = useDeleteMovie()
 
   useEffect(() => {
     dispatch(
@@ -97,6 +104,7 @@ const HomePage: React.FC = () => {
   }, [dispatch, filter, keywords, sortBy])
 
   const handleClickAdd = () => {
+    setEditedMovie(undefined)
     setAddOrEditModalVisible(true)
   }
 
@@ -108,6 +116,11 @@ const HomePage: React.FC = () => {
   const handleViewDetail = useCallback((movie: Movie) => {
     window.scrollTo(0, 0)
     setMovieDetail(movie)
+  }, [])
+
+  const handleDelete = useCallback((id: Pick<Movie, 'id'>) => {
+    setDeletedMovieId(id)
+    setIsDeleteModalVisible(true)
   }, [])
 
   return (
@@ -138,7 +151,7 @@ const HomePage: React.FC = () => {
 
         <SearchResults
           onEdit={handleEdit}
-          onDelete={() => setIsDeleteModalVisible(true)}
+          onDelete={handleDelete}
           data={searchResult.data}
           totalAmount={searchResult.totalAmount}
           onViewDetail={handleViewDetail}
@@ -156,8 +169,20 @@ const HomePage: React.FC = () => {
         />
       )}
 
-      {isDeleteModalVisible && (
-        <DeleteMovieModal onClose={() => setIsDeleteModalVisible(false)} />
+      {isDeleteModalVisible && deletedMovieId && (
+        <DeleteMovieModal
+          id={deletedMovieId}
+          onClose={() => setIsDeleteModalVisible(false)}
+          onSuccess={() => {
+            dispatch(
+              fetchMovieList({
+                sortBy: sortBy,
+                search: keywords,
+                filter: filter,
+              })
+            )
+          }}
+        />
       )}
 
       {isSuccessModalVisible && (

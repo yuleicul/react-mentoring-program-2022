@@ -1,5 +1,6 @@
 import { forwardRef, useId } from 'react'
 import styled from 'styled-components'
+import ErrorMessage from '../ErrorMessage'
 import CalendarIcon from './calendar-icon.svg'
 
 export const Wrapper = styled.div`
@@ -41,12 +42,6 @@ export const Wrapper = styled.div`
     top: 47;
     right: 18;
   }
-
-  > .errorMessage {
-    color: white;
-    position: absolute;
-    font-size: 14px;
-  }
 `
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -70,7 +65,7 @@ const Input: React.ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
         </div>
       )}
 
-      {errorMessage && <div className="errorMessage">{errorMessage}</div>}
+      {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
     </Wrapper>
   )
 }

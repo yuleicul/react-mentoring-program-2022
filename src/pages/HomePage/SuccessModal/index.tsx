@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import Form from '../../../common/Form'
 import Modal from '../../../common/Modal'
 import SuccessSvg from './success.svg'
 
@@ -22,13 +21,11 @@ interface SuccessModalProps {
 const SuccessModal: React.FC<SuccessModalProps> = (props) => {
   return (
     <Modal width={686} onClose={props.onClose}>
-      <Form>
-        <Wrapper>
-          <SuccessSvg />
-          <div className="largeText">congratulations !</div>
-          <div>The movie has been added to database successfully</div>
-        </Wrapper>
-      </Form>
+      <Wrapper>
+        <SuccessSvg />
+        <div className="largeText">congratulations !</div>
+        <div>The movie has been added to database successfully</div>
+      </Wrapper>
     </Modal>
   )
 }

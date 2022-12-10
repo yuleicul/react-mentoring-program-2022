@@ -1,8 +1,10 @@
 import { forwardRef, useId } from 'react'
 import styled from 'styled-components'
+import ErrorMessage from '../ErrorMessage'
 
 export const Wrapper = styled.div`
   position: relative;
+  width: 100%;
   > label {
     font-size: 16;
     color: ${(props) => props.theme.color.main};
@@ -17,11 +19,6 @@ export const Wrapper = styled.div`
     border-radius: 4px;
     background-color: rgba(50, 50, 50, 0.8);
     color: white;
-  }
-  > .errorMessage {
-    color: white;
-    position: absolute;
-    font-size: 14px;
   }
 `
 
@@ -40,7 +37,7 @@ const Textarea: React.ForwardRefRenderFunction<
     <Wrapper>
       <label htmlFor={id}>{label}</label>
       <textarea {...selectProps} ref={ref} rows={7}></textarea>
-      {errorMessage && <div className="errorMessage">{errorMessage}</div>}
+      {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
     </Wrapper>
   )
 }
