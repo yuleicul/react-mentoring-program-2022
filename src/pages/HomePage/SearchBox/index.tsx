@@ -29,11 +29,12 @@ const Wrapper = styled.div`
 `
 
 interface SearchBoxProps {
+  defaultValue: string
   onSearch: (keywords: string) => void
 }
 
-const SearchBox: React.FC<SearchBoxProps> = ({ onSearch }) => {
-  const [value, setValue] = useState('')
+const SearchBox: React.FC<SearchBoxProps> = ({ defaultValue, onSearch }) => {
+  const [value, setValue] = useState(defaultValue)
 
   return (
     <Wrapper>

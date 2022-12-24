@@ -1,23 +1,24 @@
-import styled from 'styled-components'
 import { useCallback, useEffect, useState } from 'react'
+import styled from 'styled-components'
 
 import AddMovieButton from './AddMovieButton'
+import AddOrEditMovieModal from './AddOrEditMovieModal'
+import DeleteMovieModal from './DeleteMovieModal'
+import Footer from './Footer'
 import GenreFilters from './GenreFilters'
 import SearchBox from './SearchBox'
 import SearchResults from './SearchResults'
 import SortDropdown from './SortDropdown'
-import Footer from './Footer'
-import AddOrEditMovieModal from './AddOrEditMovieModal'
-import DeleteMovieModal from './DeleteMovieModal'
 import SuccessModal from './SuccessModal'
-
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
+import { getMovie } from '../../apis'
 import NetflixLogo from '../../common/NetflixLogo'
-import BackHomeButton from './BackHomeButton'
-import MovieDetail from './MovieDetail'
-import { fetchMovieList, Movie, selectAll } from '../../store/moviesSlice'
-import { useAppDispatch, useAppSelector } from '../../store'
-import headerImage from './header.png'
 import { useSaveMovie } from '../../hooks/mutation'
+import { useAppDispatch, useAppSelector } from '../../store'
+import { fetchMovieList, Movie, selectAll } from '../../store/moviesSlice'
+import BackHomeButton from './BackHomeButton'
+import headerImage from './header.png'
+import MovieDetail from './MovieDetail'
 
 const Wrapper = styled.div`
   > .movieDetail {
@@ -75,17 +76,31 @@ const HomePage: React.FC = () => {
   const [movieDetail, setMovieDetail] = useState<Movie>()
   const [deletedMovieId, setDeletedMovieId] = useState<Pick<Movie, 'id'>>()
 
-  const [keywords, setKeywords] = useState('')
-  const [sortBy, setSortBy] = useState('release_date')
-  const [filter, setFilter] = useState('')
+  const navigate = useNavigate()
+  const { searchQuery = '' } = useParams()
+
+  const [searchParams, setSearchParams] = useSearchParams({
+    sortBy: 'release_date',
+  })
+  const sortBy = searchParams.get('sortBy') || ''
+  const genre = searchParams.get('genre') || ''
+  const movieId = searchParams.get('movie') || ''
+
+  useEffect(() => {
+    const loadMovie = async () => {
+      const movie = await getMovie(Number.parseInt(movieId))
+      setMovieDetail(movie)
+    }
+    loadMovie()
+  }, [movieId])
 
   const [saveMovie] = useSaveMovie({
     onSuccess: () => {
       dispatch(
         fetchMovieList({
           sortBy: sortBy,
-          search: keywords,
-          filter: filter,
+          search: searchQuery,
+          filter: genre,
         })
       )
       setAddOrEditModalVisible(false)
@@ -97,11 +112,11 @@ const HomePage: React.FC = () => {
     dispatch(
       fetchMovieList({
         sortBy: sortBy,
-        search: keywords,
-        filter: filter,
+        search: searchQuery,
+        filter: genre,
       })
     )
-  }, [dispatch, filter, keywords, sortBy])
+  }, [dispatch, genre, searchQuery, sortBy])
 
   const handleClickAdd = () => {
     setEditedMovie(undefined)
@@ -113,10 +128,13 @@ const HomePage: React.FC = () => {
     setAddOrEditModalVisible(true)
   }
 
-  const handleViewDetail = useCallback((movie: Movie) => {
-    window.scrollTo(0, 0)
-    setMovieDetail(movie)
-  }, [])
+  const handleViewDetail = useCallback(
+    (movie: Movie) => {
+      window.scrollTo(0, 0)
+      setSearchParams({ movie: movie.id.toString(), sortBy, genre: genre })
+    },
+    [genre, setSearchParams, sortBy]
+  )
 
   const handleDelete = useCallback((id: Pick<Movie, 'id'>) => {
     setDeletedMovieId(id)
@@ -129,7 +147,11 @@ const HomePage: React.FC = () => {
         <div className="movieDetail">
           <div className="logoRow">
             <div className="textLogo">netflixroulette</div>
-            <BackHomeButton onClick={() => setMovieDetail(undefined)} />
+            <BackHomeButton
+              onClick={() =>
+                setSearchParams({ movie: '', sortBy, genre: genre })
+              }
+            />
           </div>
           <MovieDetail data={movieDetail} />
         </div>
@@ -139,14 +161,29 @@ const HomePage: React.FC = () => {
             <NetflixLogo />
             <AddMovieButton onClick={handleClickAdd} />
           </div>
-          <SearchBox onSearch={(keywords) => setKeywords(keywords)} />
+          <SearchBox
+            defaultValue={searchQuery}
+            onSearch={(keywords) => {
+              navigate(`/search/${keywords}?${searchParams}`)
+            }}
+          />
         </div>
       )}
 
       <div className="content">
         <div className="filters">
-          <GenreFilters onChange={(value) => setFilter(value)} />
-          <SortDropdown onChange={(value) => setSortBy(value)} />
+          <GenreFilters
+            defaultValue={genre}
+            onChange={(value) =>
+              setSearchParams({ movie: movieId, sortBy, genre: value })
+            }
+          />
+          <SortDropdown
+            defaultValue={sortBy}
+            onChange={(value) =>
+              setSearchParams({ movie: movieId, sortBy: value, genre })
+            }
+          />
         </div>
 
         <SearchResults
@@ -177,8 +214,8 @@ const HomePage: React.FC = () => {
             dispatch(
               fetchMovieList({
                 sortBy: sortBy,
-                search: keywords,
-                filter: filter,
+                search: searchQuery,
+                filter: genre,
               })
             )
           }}

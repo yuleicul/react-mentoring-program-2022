@@ -191,6 +191,10 @@ Add Redux store
 
   https://github.com/reduxjs/redux-toolkit/issues/1466
 
+- When there is one more `/` in route, will occur 'Unexpected token < error in react router component'
+
+  https://stackoverflow.com/questions/29718481/unexpected-token-error-in-react-router-component
+
 ## Issues
 
 - (!) Circular dependencies

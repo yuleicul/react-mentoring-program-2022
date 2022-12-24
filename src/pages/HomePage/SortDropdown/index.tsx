@@ -14,14 +14,18 @@ const Wrapper = styled.div`
   }
 `
 interface SortDropdownProps {
+  defaultValue: string
   onChange: (value: string) => void
 }
 
-const SortDropdown: React.FC<SortDropdownProps> = ({ onChange }) => {
+const SortDropdown: React.FC<SortDropdownProps> = ({
+  defaultValue,
+  onChange,
+}) => {
   return (
     <Wrapper>
       <div className="title">Sort By</div>
-      <Dropdown onChange={onChange} />
+      <Dropdown defaultValue={defaultValue} onChange={onChange} />
     </Wrapper>
   )
 }

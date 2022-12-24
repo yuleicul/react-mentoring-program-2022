@@ -4,7 +4,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { Provider } from 'react-redux'
 import { ThemeProvider } from 'styled-components'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, redirect, RouterProvider } from 'react-router-dom'
 // fix: An import path cannot end with a '.tsx' extension. Consider importing './App' instead.ts(2691)
 // https://github.com/Microsoft/TypeScript/issues/27481
 import App from './App'
@@ -20,9 +20,17 @@ const router = createBrowserRouter([
     path: '/',
     element: <App />,
     errorElement: <NotFoundPage />,
+    loader: ({ request }) => {
+      if (request.url.match('search')) return null
+      return redirect('/search')
+    },
     children: [
       {
         path: 'search',
+        element: <HomePage />,
+      },
+      {
+        path: 'search/:searchQuery',
         element: <HomePage />,
       },
     ],

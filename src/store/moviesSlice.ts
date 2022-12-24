@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { RootState } from '.'
 
-const API_SERVER = 'http://localhost:4000'
+export const API_SERVER = 'http://localhost:4000'
 
 export interface Movie {
   title: string
@@ -23,7 +23,7 @@ export interface fetchMovieListResponse {
   totalAmount: number
 }
 
-interface fetchMovieListParams {
+export interface fetchMovieListParams {
   sortBy: string
   search: string
   filter: string
