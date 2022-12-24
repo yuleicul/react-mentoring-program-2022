@@ -1,7 +1,7 @@
-import HomePage from './pages/HomePage'
+import { Outlet } from 'react-router-dom'
 
 const App: React.FC = () => {
-  return <HomePage />
+  return <Outlet />
 }
 
 export default App
