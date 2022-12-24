@@ -32,8 +32,12 @@ export default {
   plugins: [
     process.env.NODE_ENV === 'development' &&
       serve({
+        open: true,
         contentBase: 'dist',
         port: 3000,
+        // Fix 404 not found when navigating to /search. More details:
+        // https://stackoverflow.com/questions/57775945/rollup-plugin-serve-history-api-fallback-not-working
+        historyApiFallback: true,
       }),
     process.env.NODE_ENV === 'development' && livereload(),
 
