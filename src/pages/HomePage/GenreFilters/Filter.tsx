@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
@@ -25,18 +24,19 @@ const Wrapper = styled.div`
 `
 
 interface FilterProps {
+  defaultChecked: boolean
   children: string
 }
 
-const Filter: React.FC<FilterProps> = ({ children }) => {
+const Filter: React.FC<FilterProps> = ({ defaultChecked, children }) => {
   return (
     <Wrapper>
       <input
         type="radio"
         id={children}
         name="genre"
-        value={children}
-        defaultChecked={children === 'All'}
+        value={children === 'All' ? '' : children}
+        defaultChecked={defaultChecked}
       />
       <label htmlFor={children}>{children}</label>
     </Wrapper>

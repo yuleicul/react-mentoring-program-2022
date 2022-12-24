@@ -9,9 +9,13 @@ const Wrapper = styled.form`
 `
 interface GenreFiltersProps {
   onChange: (filter: string) => void
+  defaultValue: string
 }
 
-const GenreFilters: React.FC<GenreFiltersProps> = ({ onChange }) => {
+const GenreFilters: React.FC<GenreFiltersProps> = ({
+  onChange,
+  defaultValue,
+}) => {
   const handleChange = useCallback(
     (id: string) => {
       onChange(id === 'All' ? '' : id)
@@ -20,13 +24,18 @@ const GenreFilters: React.FC<GenreFiltersProps> = ({ onChange }) => {
   )
 
   return (
-    // @ts-ignore
-    <Wrapper onChange={(e) => handleChange(e.target.id)}>
-      <Filter>All</Filter>
-      <Filter>Documentary</Filter>
-      <Filter>Comedy</Filter>
-      <Filter>Horror</Filter>
-      <Filter>Crime</Filter>
+    <Wrapper
+      // @ts-ignore
+      onChange={(e) => handleChange(e.target.id)}
+      defaultValue={defaultValue}
+    >
+      <Filter defaultChecked={defaultValue === ''}>All</Filter>
+      <Filter defaultChecked={defaultValue === 'Documentary'}>
+        Documentary
+      </Filter>
+      <Filter defaultChecked={defaultValue === 'Comedy'}>Comedy</Filter>
+      <Filter defaultChecked={defaultValue === 'Horror'}>Horror</Filter>
+      <Filter defaultChecked={defaultValue === 'Crime'}>Crime</Filter>
     </Wrapper>
   )
 }

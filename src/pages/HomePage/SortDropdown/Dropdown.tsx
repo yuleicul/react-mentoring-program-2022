@@ -38,15 +38,16 @@ const Wrapper = styled.div`
 `
 
 interface DropdownProps {
+  defaultValue: string
   onChange: (value: string) => void
 }
 
-const Dropdown: React.FC<DropdownProps> = ({ onChange }) => {
+const Dropdown: React.FC<DropdownProps> = ({ defaultValue, onChange }) => {
   return (
     <Wrapper>
       {/* @ts-ignore */}
       <form onChange={(e) => onChange(e.target.value)}>
-        <select name="sortBy">
+        <select name="sortBy" defaultValue={defaultValue}>
           <option value="release_date">Release Date</option>
           <option value="vote_average">Rating</option>
         </select>
