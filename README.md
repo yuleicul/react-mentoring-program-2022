@@ -12,7 +12,7 @@
 | Module #6: Hooks                    | Nov 09, 2022 - Nov 15, 2022 | 7 days  | ✅  |
 | Module #7: Redux                    | Nov 16, 2022 - Nov 29, 2022 | 14 days | ✅  |
 | Module #8: Forms                    | Nov 30, 2022 - Dec 06, 2022 | 7 days  | ✅  |
-| Module #9: Routing                  | Dec 07, 2022 - Dec 13, 2022 | 7 days  |     |
+| Module #9: Routing                  | Dec 07, 2022 - Dec 13, 2022 | 7 days  | ✅  |
 | Module #10: Testing                 | Dec 14, 2022 - Dec 20, 2022 | 7 days  |     |
 | Module #11: SSR                     | Dec 21, 2022 - Dec 27, 2022 | 7 days  |     |
 | Module #12: Patterns, tips & tricks | Dec 28, 2022 - Jan 03, 2023 | 7 days  |     |
@@ -88,69 +88,25 @@ You can click [here](https://excalidraw.com/#json=DeOoPxllmrObvAj66gmMV,26oCT1_D
 
 https://github.com/yuleicul/rgm-2022q4-demo/pull/1
 
-### Changelog
-
-Add devdep rollup (OMG)
-Update README
-Hover on card to show the menu
-Add item context menu
-Add global styles (temp ways)
-Update styles
-Rename home page
-Add Homepage UI
-Solve problem with importing svg
-Delete unused file
-(WIP) Add global styles by `createGlobalStyle`
-Add dev dep @types/styled-components
-Fix missing shims for Node.js built-ins
-Replace emotion with styled-components
-Remove `--bundleConfigAsCjs`
-Add ErrorBoundary
-Add emotion for styling
-Support the new jsx transform
-
 ## Module #5: Components (Part 2)
 
 https://github.com/yuleicul/rgm-2022q4-demo/pull/3
-
-### Changelog
-
-Update README
-Fix ts warnings
-Turn on ts strict compiler option
-Pass data to edit modal
-Close movie context menu on blur
-Add delete and success modals
-Add Google fonts
-Finish AddMovieModal component
-Fix style overriding
-Add common Input component
 
 ## Module #6: Hooks
 
 https://github.com/yuleicul/rgm-2022q4-demo/pull/4
 
-### Changelog
-
-Fix changelog
-Update changelog
-Add new custom hook useFetch
-Add movie detail banner
-Add eslint plugin react hooks
-Add changelog to README
-
 ## Module #7: Redux
 
 https://github.com/yuleicul/rgm-2022q4-demo/pull/6
 
-### Changelog
+## Module #8: Forms
 
-Update changelog
-Fix styles of rating score
-Import png as data-uris
-Fix rollup warning 'this' has been rewritten to 'undefined'
-Use Redux to fetch movies
-Add Redux store
+https://github.com/yuleicul/rgm-2022q4-demo/pull/7
+
+## Module #9: Routing
+
+https://github.com/yuleicul/rgm-2022q4-demo/pull/8
 
 ## Fixed issues
 
