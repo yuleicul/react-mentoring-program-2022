@@ -13,7 +13,7 @@
 | Module #7: Redux                    | Nov 16, 2022 - Nov 29, 2022 | 14 days | ✅  |
 | Module #8: Forms                    | Nov 30, 2022 - Dec 06, 2022 | 7 days  | ✅  |
 | Module #9: Routing                  | Dec 07, 2022 - Dec 13, 2022 | 7 days  | ✅  |
-| Module #10: Testing                 | Dec 14, 2022 - Dec 20, 2022 | 7 days  |     |
+| Module #10: Testing                 | Dec 14, 2022 - Dec 20, 2022 | 7 days  | ✅  |
 | Module #11: SSR                     | Dec 21, 2022 - Dec 27, 2022 | 7 days  |     |
 | Module #12: Patterns, tips & tricks | Dec 28, 2022 - Jan 03, 2023 | 7 days  |     |
 | Module #13: Clean Code              | Jan 04, 2023 - Jan 06, 2023 | 3 days  |     |
@@ -150,6 +150,10 @@ https://github.com/yuleicul/rgm-2022q4-demo/pull/8
 - When there is one more `/` in route, will occur 'Unexpected token < error in react router component'
 
   https://stackoverflow.com/questions/29718481/unexpected-token-error-in-react-router-component
+
+- When running jest, SyntaxError: Cannot use import statement outside a module
+
+  https://github.com/facebook/jest/issues/9395#issuecomment-616217736
 
 ## Issues
 
