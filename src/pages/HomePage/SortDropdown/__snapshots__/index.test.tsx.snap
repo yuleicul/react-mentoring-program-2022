@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="SortDropdown__Wrapper-sc-l4eavy-0 EeDhc"
+>
+  <div
+    className="title"
+  >
+    Sort By
+  </div>
+  <div
+    className="Dropdown__Wrapper-sc-1vjrvvd-0 fJVdrL"
+  >
+    <form
+      onChange={[Function]}
+    >
+      <select
+        defaultValue="release_date"
+        name="sortBy"
+      >
+        <option
+          value="release_date"
+        >
+          Release Date
+        </option>
+        <option
+          value="vote_average"
+        >
+          Rating
+        </option>
+      </select>
+    </form>
+  </div>
+</div>
+`;
