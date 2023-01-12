@@ -1,23 +1,23 @@
 # React Global Mentoring Program
 
-## Completion
+## Summary
 
-|                                     |                             |         |     |
-| ----------------------------------- | --------------------------- | ------- | --- |
-| Module #1: Help module              | Oct 11, 2022                | 1 day   | ✅  |
-| Module #2: Core concepts            | Oct 12, 2022 - Oct 18, 2022 | 7 days  | ✅  |
-| Module #3: ~~Webpack~~ Rollup       | Oct 19, 2022 - Oct 25, 2022 | 7 days  | ✅  |
-| Module #4: Components (Part 1)      | Oct 26, 2022 - Nov 01, 2022 | 7 days  | ✅  |
-| Module #5: Components (Part 2)      | Nov 02, 2022 - Nov 08, 2022 | 7 days  | ✅  |
-| Module #6: Hooks                    | Nov 09, 2022 - Nov 15, 2022 | 7 days  | ✅  |
-| Module #7: Redux                    | Nov 16, 2022 - Nov 29, 2022 | 14 days | ✅  |
-| Module #8: Forms                    | Nov 30, 2022 - Dec 06, 2022 | 7 days  | ✅  |
-| Module #9: Routing                  | Dec 07, 2022 - Dec 13, 2022 | 7 days  | ✅  |
-| Module #10: Testing                 | Dec 14, 2022 - Dec 20, 2022 | 7 days  | ✅  |
-| Module #11: SSR                     | Dec 21, 2022 - Dec 27, 2022 | 7 days  |     |
-| Module #12: Patterns, tips & tricks | Dec 28, 2022 - Jan 03, 2023 | 7 days  |     |
-| Module #13: Clean Code              | Jan 04, 2023 - Jan 06, 2023 | 3 days  |     |
-| Module #14: CloudX: Foundations     | Jan 07, 2023 - Jan 09, 2023 | 3 days  |     |
+| Module                              | Schedule                    | -       | Status | PR                                                 |
+| ----------------------------------- | --------------------------- | ------- | ------ | -------------------------------------------------- |
+| Module #1: Help module              | Oct 11, 2022                | 1 day   | ✅     | -                                                  |
+| Module #2: Core concepts            | Oct 12, 2022 - Oct 18, 2022 | 7 days  | ✅     | -                                                  |
+| Module #3: ~~Webpack~~ Rollup       | Oct 19, 2022 - Oct 25, 2022 | 7 days  | ✅     | -                                                  |
+| Module #4: Components (Part 1)      | Oct 26, 2022 - Nov 01, 2022 | 7 days  | ✅     | https://github.com/yuleicul/rgm-2022q4-demo/pull/1 |
+| Module #5: Components (Part 2)      | Nov 02, 2022 - Nov 08, 2022 | 7 days  | ✅     | https://github.com/yuleicul/rgm-2022q4-demo/pull/3 |
+| Module #6: Hooks                    | Nov 09, 2022 - Nov 15, 2022 | 7 days  | ✅     | https://github.com/yuleicul/rgm-2022q4-demo/pull/4 |
+| Module #7: Redux                    | Nov 16, 2022 - Nov 29, 2022 | 14 days | ✅     | https://github.com/yuleicul/rgm-2022q4-demo/pull/6 |
+| Module #8: Forms                    | Nov 30, 2022 - Dec 06, 2022 | 7 days  | ✅     | https://github.com/yuleicul/rgm-2022q4-demo/pull/7 |
+| Module #9: Routing                  | Dec 07, 2022 - Dec 13, 2022 | 7 days  | ✅     | https://github.com/yuleicul/rgm-2022q4-demo/pull/8 |
+| Module #10: Testing                 | Dec 14, 2022 - Dec 20, 2022 | 7 days  | ✅     | https://github.com/yuleicul/rgm-2022q4-demo/pull/9 |
+| Module #11: SSR                     | Dec 21, 2022 - Dec 27, 2022 | 7 days  | ⭕     | -                                                  |
+| Module #12: Patterns, tips & tricks | Dec 28, 2022 - Jan 03, 2023 | 7 days  | ⭕     | -                                                  |
+| Module #13: Clean Code              | Jan 04, 2023 - Jan 06, 2023 | 3 days  | ⭕     | -                                                  |
+| Module #14: CloudX: Foundations     | Jan 07, 2023 - Jan 09, 2023 | 3 days  | ⭕     | -                                                  |
 
 ## Module #2: Core concepts
 
@@ -83,30 +83,6 @@ You can click [here](https://excalidraw.com/#json=DeOoPxllmrObvAj66gmMV,26oCT1_D
 - How does dev server, such as [rollup-plugin-serve](https://github.com/thgh/rollup-plugin-serve), work?
 
   > Keywords: http server
-
-## Module #4: Components (Part 1)
-
-https://github.com/yuleicul/rgm-2022q4-demo/pull/1
-
-## Module #5: Components (Part 2)
-
-https://github.com/yuleicul/rgm-2022q4-demo/pull/3
-
-## Module #6: Hooks
-
-https://github.com/yuleicul/rgm-2022q4-demo/pull/4
-
-## Module #7: Redux
-
-https://github.com/yuleicul/rgm-2022q4-demo/pull/6
-
-## Module #8: Forms
-
-https://github.com/yuleicul/rgm-2022q4-demo/pull/7
-
-## Module #9: Routing
-
-https://github.com/yuleicul/rgm-2022q4-demo/pull/8
 
 ## Fixed issues
 
